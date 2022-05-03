@@ -1,3 +1,4 @@
 /target/
 
-persistence.xml
+/src/main/java/META-INF/persistence.xml
+/target/classes/META-INF/persistence.xml

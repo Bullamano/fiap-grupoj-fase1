@@ -7,4 +7,8 @@ A atividade realizada neste repositório é a de criar uma base de dados relacio
 ## Detalhes do projeto
 O projeto é de uma aplicação para ajudar com tarefas corriqueiras. Usuários poderão criar páginas para deixar suas dicas e tutoriais sobre assuntos que os interessem. Também poderão separar estas páginas em categorias, para organizá-las. Dentro dessas páginas poderão haver tanto texto (os "procedimentos") quanto links para imagens, outros textos e vídeos (os "recursos").
 
-Neste projeto, estamos usando JPA e banco de dados MySQL.
+Neste projeto, estamos usando JPA e banco de dados MySQL. O schema do banco (que está com o nome provisório da aplicação de "Need Help App") se encontra abaixo:
+
+<p align="center">
+  <img src="https://i.ibb.co/JpqyYd6/Need-Help-App-DBschema.png" alt="NeedHelpAppSchema"/>
+</p>

@@ -32,8 +32,14 @@ public class Recursos {
 	@ManyToOne
 	private Pagina pagina;
 	
-	//TODO realizar sanitização de nulos nos links (todos podem ser nulos)
+	/**
+	 * Ordem na qual os recursos devem aparecer
+	 */
+	@Column(name="REC_ORDEM")
+	private Integer ordem;
 	
+	//TODO realizar sanitização de nulos nos links (todos podem ser nulos)
+
 	/**
 	 * Link para um video relacionado ao assunto
 	 */
@@ -81,6 +87,20 @@ public class Recursos {
 	}
 
 	/**
+	 * @return a ordem
+	 */
+	public Integer getOrdem() {
+		return ordem;
+	}
+
+	/**
+	 * @param ordem a ordem a ser atribuida
+	 */
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
+	}
+	
+	/**
 	 * @return o linkVideo
 	 */
 	public String getLinkVideo() {
@@ -122,4 +142,26 @@ public class Recursos {
 		this.linkImagem = linkImagem;
 	}
 
+	/**
+	 * @return o id e o nome formatados juntos em formato string
+	 */
+	@Override
+	public String toString() {
+		
+		String stringToReturn = id.toString();
+		
+		if(!(linkVideo.isEmpty() || linkVideo.isBlank())) {
+			stringToReturn = stringToReturn + " - " + linkVideo;
+		}
+		
+		if(!(linkLeitura.isEmpty() || linkLeitura.isBlank())) {
+			stringToReturn = stringToReturn + " - " + linkLeitura;
+		}
+		
+		if(!(linkImagem.isEmpty() || linkImagem.isBlank())) {
+			stringToReturn = stringToReturn + " - " + linkImagem;
+		}
+		
+		return stringToReturn;
+	}
 }

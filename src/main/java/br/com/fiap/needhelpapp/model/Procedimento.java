@@ -33,6 +33,12 @@ public class Procedimento {
 	private Pagina pagina;
 	
 	/**
+	 * Ordem na qual os procedimentos devem aparecer
+	 */
+	@Column(name = "PRC_ORDEM")
+	private Integer ordem;
+
+	/**
 	 * Titulo do procedimento (subtitulos da pagina)
 	 */
 	@Column(name = "PRC_TITULO", length = 50)
@@ -71,6 +77,20 @@ public class Procedimento {
 	public void setPagina(Pagina pagina) {
 		this.pagina = pagina;
 	}
+	
+	/**
+	 * @return a ordem
+	 */
+	public Integer getOrdem() {
+		return ordem;
+	}
+
+	/**
+	 * @param ordem a ordem a ser atribuida
+	 */
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
+	}
 
 	/**
 	 * @return o titulo
@@ -100,4 +120,11 @@ public class Procedimento {
 		this.tarefas = tarefas;
 	}
 	
+	/**
+	 * @return o id e o nome formatados juntos em formato string
+	 */
+	@Override
+	public String toString() {
+		return id + " - " + titulo + " - " + tarefas;
+	}
 }

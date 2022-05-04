@@ -32,20 +32,6 @@ public class Categoria {
 	private Collection<Pagina> paginas;
 
 	/**
-	 * @return as paginas dessa categoria
-	 */
-	public Collection<Pagina> getPaginas() {
-		return paginas;
-	}
-
-	/**
-	 * @param paginas as paginas a serem atribuidas
-	 */
-	public void setPaginas(Collection<Pagina> paginas) {
-		this.paginas = paginas;
-	}
-
-	/**
 	 * @return o id
 	 */
 	public Integer getId() {
@@ -71,6 +57,20 @@ public class Categoria {
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	/**
+	 * @return as paginas dessa categoria
+	 */
+	public Collection<Pagina> getPaginas() {
+		return paginas;
+	}
+
+	/**
+	 * @param paginas as paginas a serem atribuidas
+	 */
+	public void setPaginas(Collection<Pagina> paginas) {
+		this.paginas = paginas;
 	}
 	
 	/**

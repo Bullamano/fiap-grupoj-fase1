@@ -18,12 +18,42 @@ public class NHAFTestsDAO {
                 createEntityManagerFactory("fiap-grupoj-atividade-fase1").
                 createEntityManager();
         	
-            PaginaDAO paginaDAO = new PaginaDAO(entityManager);
+        	CategoriaDAO categoriaDAO = new CategoriaDAO(entityManager);
+        	PaginaDAO paginaDAO = new PaginaDAO(entityManager);
+        	ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO(entityManager);
+            RecursosDAO recursosDAO = new RecursosDAO(entityManager);
 
-            List<Pagina> teste = paginaDAO.listar();
-            for(Pagina pag : teste)
+            List<Categoria> testeCat = categoriaDAO.listar();
+            List<Pagina> testePag = paginaDAO.listar();
+            List<Procedimento> testeProc = procedimentoDAO.listar();
+            List<Recursos> testeRec = recursosDAO.listar();
+            
+            System.out.println("");
+            System.out.println("--Categorias--");
+            for(Categoria cat : testeCat)
             {
-            	System.out.println(pag.getCategoria());
+            	System.out.println(cat);
+            }
+            
+            System.out.println("");
+            System.out.println("--Páginas--");
+            for(Pagina pag : testePag)
+            {
+            	System.out.println(pag);//.getCategoria());
+            }
+            
+            System.out.println("");
+            System.out.println("--Procedimentos--");
+            for(Procedimento proc : testeProc)
+            {
+            	System.out.println(proc);
+            }
+            
+            System.out.println("");
+            System.out.println("--Recursos--");
+            for(Recursos rec : testeRec)
+            {
+            	System.out.println(rec);
             }
         } 
         catch (Exception e)

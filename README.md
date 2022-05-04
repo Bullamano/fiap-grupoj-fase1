@@ -14,7 +14,7 @@ Neste projeto, estamos usando Java 17, JPA e banco de dados MySQL. O schema do b
 </p>
 
 ## Como rodar o projeto
-Na pasta "dcScripts", exitem alguns scripts MySQL para criação do banco que será usado. Basta rodá-los em ordem de acordo com os índices em seus nomes e será criado o banco de dados inicial para os testes.
+Na pasta "dbScripts", exitem alguns scripts MySQL para criação do banco que será usado. Basta rodá-los em ordem de acordo com os índices em seus nomes e será criado o banco de dados inicial para os testes.
 Em seguida, basta rodar os arquivos Java localizados em "fiap-grupoj-fase1/src/main/java/br/com/fiap/needhelpapp/tests/" para realizar os testes de persistência.
 Boa sorte e bons testes.
 

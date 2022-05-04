@@ -38,8 +38,6 @@ public class Recursos {
 	@Column(name="REC_ORDEM")
 	private Integer ordem;
 	
-	//TODO realizar sanitização de nulos nos links (todos podem ser nulos)
-
 	/**
 	 * Link para um video relacionado ao assunto
 	 */
@@ -150,15 +148,15 @@ public class Recursos {
 		
 		String stringToReturn = id.toString();
 		
-		if(!(linkVideo.isEmpty() || linkVideo.isBlank())) {
+		if(linkVideo != null && !(linkVideo.isEmpty() || linkVideo.isBlank())) {
 			stringToReturn = stringToReturn + " - " + linkVideo;
 		}
 		
-		if(!(linkLeitura.isEmpty() || linkLeitura.isBlank())) {
+		if(linkLeitura != null && !(linkLeitura.isEmpty() || linkLeitura.isBlank())) {
 			stringToReturn = stringToReturn + " - " + linkLeitura;
 		}
 		
-		if(!(linkImagem.isEmpty() || linkImagem.isBlank())) {
+		if(linkImagem != null && !(linkImagem.isEmpty() || linkImagem.isBlank())) {
 			stringToReturn = stringToReturn + " - " + linkImagem;
 		}
 		

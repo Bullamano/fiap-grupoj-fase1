@@ -46,6 +46,12 @@ public class Pagina {
 	private Collection<Recursos> recursos;
 	
 	/**
+	 * Favoritos de usuários na página
+	 */
+	@OneToMany(mappedBy = "pagina")
+	private Collection<Favorito> favoritos;
+	
+	/**
 	 * @return o id
 	 */
 	public Integer getId() {
@@ -113,6 +119,20 @@ public class Pagina {
 	 */
 	public void setRecursos(Collection<Recursos> recursos) {
 		this.recursos = recursos;
+	}
+
+	/**
+	 * @return os favoritos
+	 */
+	public Collection<Favorito> getFavoritos() {
+		return favoritos;
+	}
+
+	/**
+	 * @param favoritos os favoritos a serem atribuidos
+	 */
+	public void setFavoritos(Collection<Favorito> favoritos) {
+		this.favoritos = favoritos;
 	}
 
 	/**

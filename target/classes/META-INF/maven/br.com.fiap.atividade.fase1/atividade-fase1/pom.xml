@@ -20,6 +20,13 @@
 	    <version>RELEASE</version>
 	  </dependency>
 	  
+	  <!-- Dependência para hash de senha -->
+	  <dependency>
+	    <groupId>org.bouncycastle</groupId>
+	    <artifactId>bcprov-jdk15on</artifactId>
+	    <version>1.60</version>
+	  </dependency>
+	  
   </dependencies>
   
 </project>

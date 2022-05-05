@@ -22,11 +22,15 @@ public class NHAFTestsDAO {
         	PaginaDAO paginaDAO = new PaginaDAO(entityManager);
         	ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO(entityManager);
             RecursosDAO recursosDAO = new RecursosDAO(entityManager);
+            UsuarioDAO usuarioDAO = new UsuarioDAO(entityManager);
+            FavoritoDAO favoritoDAO = new FavoritoDAO(entityManager);
 
             List<Categoria> testeCat = categoriaDAO.listar();
             List<Pagina> testePag = paginaDAO.listar();
             List<Procedimento> testeProc = procedimentoDAO.listar();
             List<Recursos> testeRec = recursosDAO.listar();
+            List<Usuario> testeUsr = usuarioDAO.listar();
+            List<Favorito> testeFav = favoritoDAO.listar();
             
             System.out.println("");
             System.out.println("--Categorias--");
@@ -54,6 +58,20 @@ public class NHAFTestsDAO {
             for(Recursos rec : testeRec)
             {
             	System.out.println(rec);
+            }
+            
+            System.out.println("");
+            System.out.println("--Usuários--");
+            for(Usuario usr : testeUsr)
+            {
+            	System.out.println(usr);
+            }
+            
+            System.out.println("");
+            System.out.println("--Favoritos--");
+            for(Favorito fav : testeFav)
+            {
+            	System.out.println(fav);
             }
         } 
         catch (Exception e)

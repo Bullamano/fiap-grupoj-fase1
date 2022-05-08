@@ -1,10 +1,10 @@
 package br.com.fiap.needhelpapp.tests;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import br.com.fiap.dao.CategoriaDAO;
-import br.com.fiap.dao.PaginaDAO;
-import br.com.fiap.needhelpapp.model.Categoria;
-import br.com.fiap.needhelpapp.model.Pagina;
+import br.com.fiap.dao.*;
+import br.com.fiap.needhelpapp.model.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
@@ -23,6 +23,9 @@ public class NHAFPaginaTests {
         	//DAO para os objetos Categoria e Pagina
         	CategoriaDAO categoriaDAO = new CategoriaDAO(entityManager);
         	PaginaDAO paginaDAO = new PaginaDAO(entityManager);
+        	ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO(entityManager);
+        	RecursosDAO recursosDAO = new RecursosDAO(entityManager);
+        	FavoritoDAO favoritoDAO = new FavoritoDAO(entityManager);
 
         	/**
         	 * Listagem de todas as entradas no banco de dados
@@ -102,7 +105,43 @@ public class NHAFPaginaTests {
             	System.out.println(pag);
             }
             
-          //TODO adicionar UPDATE de um registro
+            /**
+             * Modificando um objeto já presente no banco
+             */
+            entityManager.getTransaction().begin();
+            
+            Pagina paginaExistente = paginaDAO.getByNameUnique("Página inútil");
+            System.out.println("\nA página " + paginaExistente + " será modificada!\n");
+            
+            Procedimento procedimentoExistente = procedimentoDAO.recuperar(1);
+            Collection<Procedimento> procedimentosCollection = new ArrayList<Procedimento>();
+            procedimentosCollection.add(procedimentoExistente);
+            
+            Recursos recursosExistente = recursosDAO.recuperar(1);
+            Collection<Recursos> recursosCollection = new ArrayList<Recursos>();
+            recursosCollection.add(recursosExistente);
+            
+            Favorito favoritosExistente = favoritoDAO.recuperar(1);
+            Collection<Favorito> favoritoCollection = new ArrayList<Favorito>();
+            favoritoCollection.add(favoritosExistente);
+            
+            paginaExistente.setNome("Página maravilhosa");
+            paginaExistente.setProcedimentos(procedimentosCollection);
+            paginaExistente.setRecursos(recursosCollection);
+            paginaExistente.setFavoritos(favoritoCollection);
+            
+            paginaDAO.salvar(paginaExistente);
+            
+            entityManager.getTransaction().commit();
+            
+            Pagina paginaRecuperada = paginaDAO.recuperar(paginaExistente.getId());
+            
+            System.out.println("");
+            System.out.println("\nA página foi modificada: " + paginaRecuperada);
+            System.out.println("\nE agora possui:");
+            System.out.println("\n\tProcedimentos: " + paginaRecuperada.getProcedimentos());
+            System.out.println("\n\tRecursos: " + paginaRecuperada.getRecursos());
+            System.out.println("\n\tFavoritos: " + paginaRecuperada.getFavoritos());
             
             /**
              * Deletando o objeto criado acima
@@ -110,7 +149,7 @@ public class NHAFPaginaTests {
             System.out.println("\nDeletando a página criada anteriormente...");
             entityManager.getTransaction().begin();
             
-            paginaDAO.excluir(paginaNova.getId());
+            paginaDAO.excluir(paginaRecuperada.getId());
             
             entityManager.getTransaction().commit();
             

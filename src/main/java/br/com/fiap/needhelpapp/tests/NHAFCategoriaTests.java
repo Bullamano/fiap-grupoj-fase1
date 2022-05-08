@@ -95,11 +95,11 @@ public class NHAFCategoriaTests {
             System.out.println("\nA categoria " + categoriaExistente + " será modificada!");
             
             Pagina paginaExistente = paginaDAO.recuperar(1);
-            Collection<Pagina> paginasAdd = new ArrayList<Pagina>();
-            paginasAdd.add(paginaExistente);
+            Collection<Pagina> paginasCollection = new ArrayList<Pagina>();
+            paginasCollection.add(paginaExistente);
             
             categoriaExistente.setNome("Dicas espetaculares");
-            categoriaExistente.setPaginas(paginasAdd);
+            categoriaExistente.setPaginas(paginasCollection);
             
             categoriaDAO.salvar(categoriaExistente);
             

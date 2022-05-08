@@ -102,6 +102,8 @@ public class NHAFPaginaTests {
             	System.out.println(pag);
             }
             
+          //TODO adicionar UPDATE de um registro
+            
             /**
              * Deletando o objeto criado acima
              */

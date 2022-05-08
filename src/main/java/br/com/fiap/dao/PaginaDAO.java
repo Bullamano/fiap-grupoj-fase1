@@ -3,7 +3,7 @@ package br.com.fiap.dao;
 import java.util.List;
 import br.com.fiap.needhelpapp.model.Categoria;
 import br.com.fiap.needhelpapp.model.Pagina;
-import jakarta.persistence.EntityManager;
+import jakarta.persistence.*;
 
 /**
  * Classe DAO para persistência de objetos Pagina
@@ -38,11 +38,23 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	 * @return Um único resultado com o nome desejado
 	 */
 	public Pagina getByNameUnique(String nome) 
-	{		 
-		return (Pagina)this.em.createQuery(
-				"select e from Pagina e where e.nome = :nome"
-				).setParameter("nome", nome)
-				.getSingleResult();
+	{
+		try {
+			return (Pagina)this.em.createQuery(
+					"select e from Pagina e where e.nome = :nome"
+					).setParameter("nome", nome)
+					.getSingleResult();			
+		}
+		catch(NonUniqueResultException ex) {
+			//throw new NonUniqueResultException(ex.getMessage());
+			System.out.println("A pesquisa retornou mais de um resultado para o parâmetro desejado: " + ex.getMessage());
+			return null;
+		}
+		catch(NoResultException ex) {
+			//throw new NoResultException(ex.getMessage());
+			System.out.println("Não foram encontrados resultados para o parâmetro desejado - " + ex.getMessage());
+			return null;
+		}
 	}
 	
 	/**

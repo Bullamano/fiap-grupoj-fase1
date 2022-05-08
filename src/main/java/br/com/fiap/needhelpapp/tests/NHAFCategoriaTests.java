@@ -19,7 +19,7 @@ public class NHAFCategoriaTests {
         {
         	//Entity Manager
         	entityManager =  Persistence.
-                createEntityManagerFactory("fiap-grupoj-atividade-fase1").
+                createEntityManagerFactory("need-help-app-fiap").
                 createEntityManager();
         	
         	//DAO para o objeto Categoria

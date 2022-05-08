@@ -18,7 +18,7 @@ public class NHAFListagemTest {
         {
         	//Entity manager
         	entityManager =  Persistence.
-                createEntityManagerFactory("fiap-grupoj-atividade-fase1").
+                createEntityManagerFactory("need-help-app-fiap").
                 createEntityManager();
         	
         	//Instâncias da DAO de cada objeto

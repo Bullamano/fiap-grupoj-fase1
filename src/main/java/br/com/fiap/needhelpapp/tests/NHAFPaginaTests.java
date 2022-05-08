@@ -17,7 +17,7 @@ public static void main(String[] args) {
         {
         	//Entity Manager
         	entityManager =  Persistence.
-                createEntityManagerFactory("fiap-grupoj-atividade-fase1").
+                createEntityManagerFactory("need-help-app-fiap").
                 createEntityManager();
         	
         	//DAO para os objetos Categoria e Pagina
@@ -62,7 +62,7 @@ public static void main(String[] args) {
              * Pesquisa de página por um ID de uma categoria
              */            
             System.out.println("\nPesquisa por categoria (ID):");
-            List<Pagina> pesquisaCategId = paginaDAO.getByCategoria(1);
+            List<Pagina> pesquisaCategId = paginaDAO.getByCategoria(entityManager, 1);
             for(Pagina pag : pesquisaCategId)
             {
             	System.out.println(pag);

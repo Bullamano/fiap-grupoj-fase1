@@ -2,7 +2,7 @@ package br.com.fiap.dao;
 
 import java.util.List;
 import br.com.fiap.utils.Enums;
-import jakarta.persistence.EntityManager;
+import jakarta.persistence.*;
 import br.com.fiap.needhelpapp.model.Pagina;
 import br.com.fiap.needhelpapp.model.Procedimento;
 
@@ -39,11 +39,23 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	 * @return Um único resultado com o titulo desejado
 	 */
 	public Procedimento getByTituloUnique(String titulo) 
-	{		 
-		return (Procedimento)this.em.createQuery(
-				"select e from Procedimento e where e.titulo = :titulo"
-				).setParameter("titulo", titulo)
-				.getSingleResult();
+	{
+		try {
+			return (Procedimento)this.em.createQuery(
+					"select e from Procedimento e where e.titulo = :titulo"
+					).setParameter("titulo", titulo)
+					.getSingleResult();
+		}
+		catch(NonUniqueResultException ex) {
+			//throw new NonUniqueResultException(ex.getMessage());
+			System.out.println("A pesquisa retornou mais de um resultado para o parâmetro desejado: " + ex.getMessage());
+			return null;
+		}
+		catch(NoResultException ex) {
+			//throw new NoResultException(ex.getMessage());
+			System.out.println("Não foram encontrados resultados para o parâmetro desejado - " + ex.getMessage());
+			return null;
+		}
 	}
 	
 	/**
@@ -63,6 +75,7 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	/**
 	 * Pesquisa de Procedimento de acordo com uma Pagina
 	 * @param pagina Objeto Pagina
+	 * @param ordem Se as informações devem ser retornadas em ordem ascendente, decrescente ou irrelevante (conforme está no banco)
 	 * @return Lista de procedimentos pertencentes a uma Pagina
 	 */
 	@SuppressWarnings("unchecked")
@@ -90,7 +103,9 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	
 	/**
 	 * Pesquisa de Procedimento de acordo com uma Pagina
-	 * @param paginaId ID de uma Pagina
+	 * @param entityManager Entity Manager
+	 * @param paginaId paginaId ID de uma Pagina
+	 * @param ordem Se as informações devem ser retornadas em ordem ascendente, decrescente ou irrelevante (conforme está no banco)
 	 * @return Lista de procedimentos pertencentes a uma Pagina
 	 */
 	public List<Procedimento> getByPagina(EntityManager entityManager, Integer paginaId, Enums.order ordem) 

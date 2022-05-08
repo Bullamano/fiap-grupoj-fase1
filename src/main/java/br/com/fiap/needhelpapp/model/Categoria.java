@@ -5,7 +5,6 @@ import java.util.Collection;
 
 /**
  * Categoria de páginas da aplicação
- *
  */
 @Entity
 @Table(name="nhaf_categorias")

@@ -7,7 +7,6 @@ import jakarta.persistence.criteria.CriteriaQuery;
 
 /**
  * Classe generica para persistencia de dados.
- * @author Bullamano
  *
  * @param <Entidade> Representa um objeto que possui um equivalente no banco de dados.
  * @param <Chave> Representa a chave (ID) relacionada ao objeto Entidade.

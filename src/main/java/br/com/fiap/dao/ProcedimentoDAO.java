@@ -1,9 +1,10 @@
 package br.com.fiap.dao;
 
 import java.util.List;
+import br.com.fiap.utils.Enums;
+import jakarta.persistence.EntityManager;
 import br.com.fiap.needhelpapp.model.Pagina;
 import br.com.fiap.needhelpapp.model.Procedimento;
-import jakarta.persistence.EntityManager;
 
 /**
  * Classe DAO para persistência de objetos Procedimento
@@ -65,12 +66,26 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	 * @return Lista de procedimentos pertencentes a uma Pagina
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Procedimento> getByPagina(Pagina pagina) 
+	public List<Procedimento> getByPagina(Pagina pagina,  Enums.order ordem) 
 	{
-		return (List<Procedimento>)this.em.createQuery(
-				"select e from Procedimento e where e.pagina = :pagina"
-				).setParameter("pagina", pagina)
-				.getResultList();
+		if(ordem == Enums.order.asc) {
+    		return (List<Procedimento>)this.em.createQuery(
+    				"select e from Procedimento e where e.pagina = :pagina order by e.ordem asc"
+    				).setParameter("pagina", pagina)
+    				.getResultList();
+    	}
+    	else if(ordem == Enums.order.desc) {
+    		return (List<Procedimento>)this.em.createQuery(
+    				"select e from Procedimento e where e.pagina = :pagina order by e.ordem desc"
+    				).setParameter("pagina", pagina)
+    				.getResultList();
+    	}
+    	else {
+    		return (List<Procedimento>)this.em.createQuery(
+    				"select e from Procedimento e where e.pagina = :pagina"
+    				).setParameter("pagina", pagina)
+    				.getResultList();
+    	}
 	}
 	
 	/**
@@ -78,15 +93,11 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	 * @param paginaId ID de uma Pagina
 	 * @return Lista de procedimentos pertencentes a uma Pagina
 	 */
-	@SuppressWarnings("unchecked")
-	public List<Procedimento> getByPagina(EntityManager entityManager,Integer paginaId) 
+	public List<Procedimento> getByPagina(EntityManager entityManager, Integer paginaId, Enums.order ordem) 
 	{
     	Pagina pagina = new PaginaDAO(entityManager).recuperar(paginaId);
-		
-		return (List<Procedimento>)this.em.createQuery(
-				"select e from Procedimento e where e.pagina = :pagina"
-				).setParameter("pagina", pagina)
-				.getResultList();
+    	
+    	return getByPagina(pagina, ordem);
 	}
 	
 }

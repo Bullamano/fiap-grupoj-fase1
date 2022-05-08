@@ -10,7 +10,7 @@ import jakarta.persistence.Persistence;
 
 public class NHAFPaginaTests {
 	
-public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		EntityManager entityManager = null;
         try 

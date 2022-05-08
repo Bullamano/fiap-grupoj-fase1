@@ -18,7 +18,7 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> {
 	}
 	
 	/**
-	 * Pesquisa por nome
+	 * Pesquisa de Categoria por nome
 	 * @param nome String com o nome desejado para a pesquisa
 	 * @return uma Lista de categorias com o nome desejado
 	 */
@@ -32,7 +32,7 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> {
 	}
 	
 	/**
-	 * Pesquisa por um nome único
+	 * Pesquisa de Categoria por um nome único
 	 * @param nome String com o nome desejado para a pesquisa
 	 * @return Um único resultado com o nome desejado
 	 */
@@ -45,7 +45,7 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> {
 	}
 	
 	/**
-	 * Pesquisa por um nome parcial
+	 * Pesquisa de Categoria por um nome parcial
 	 * @param nome String com o nome (parcial) desejado para a pesquisa
 	 * @return uma Lista com as categorias cujos nomes possuem a string desejada
 	 */

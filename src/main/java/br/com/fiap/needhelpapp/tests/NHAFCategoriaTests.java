@@ -63,12 +63,17 @@ public class NHAFCategoriaTests {
              * Criação de objeto no banco
              */
             entityManager.getTransaction().begin();
+            
             Categoria categoriaNova = new Categoria();
             categoriaNova.setNome("Dicas ruins demais");
+            
             categoriaDAO.salvar(categoriaNova);    
+            
             entityManager.getTransaction().commit();
+            
             System.out.println("\nPesquisando a nova categoria:");
             System.out.println(categoriaDAO.getByNameUnique(categoriaNova.getNome()));
+            
             List<Categoria> catPostInsert = categoriaDAO.listar();
             System.out.println("\nListagem das categorias após o insert:");
             for(Categoria categ : catPostInsert)
@@ -81,8 +86,11 @@ public class NHAFCategoriaTests {
              */
             System.out.println("\nDeletando a categoria criada anteriormente...");
             entityManager.getTransaction().begin();
+            
             categoriaDAO.excluir(categoriaNova.getId());
+            
             entityManager.getTransaction().commit();
+            
             List<Categoria> catPostDelete = categoriaDAO.listar();
             System.out.println("\nListagem das categorias após o delete:");
             for(Categoria categ : catPostDelete)

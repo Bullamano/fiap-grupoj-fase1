@@ -1,9 +1,13 @@
 package br.com.fiap.needhelpapp.tests;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import br.com.fiap.dao.CategoriaDAO;
+import br.com.fiap.dao.PaginaDAO;
 import br.com.fiap.needhelpapp.model.Categoria;
+import br.com.fiap.needhelpapp.model.Pagina;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
@@ -22,8 +26,9 @@ public class NHAFCategoriaTests {
                 createEntityManagerFactory("need-help-app-fiap").
                 createEntityManager();
         	
-        	//DAO para o objeto Categoria
+        	//DAO para os objetos Categoria e Pagina
         	CategoriaDAO categoriaDAO = new CategoriaDAO(entityManager);
+        	PaginaDAO paginaDAO = new PaginaDAO(entityManager);
 
         	/**
         	 * Listagem de todas as entradas no banco de dados
@@ -80,6 +85,31 @@ public class NHAFCategoriaTests {
             {
             	System.out.println(categ);
             }
+                        
+            /**
+             * Modificando um objeto já presente no banco
+             */
+            entityManager.getTransaction().begin();
+            
+            Categoria categoriaExistente = categoriaDAO.getByNameUnique("Dicas ruins demais");
+            System.out.println("A categoria " + categoriaExistente + " será modificada!");
+            
+            Pagina paginaExistente = paginaDAO.recuperar(1);
+            Collection<Pagina> paginasAdd = new ArrayList<Pagina>();
+            paginasAdd.add(paginaExistente);
+            
+            categoriaExistente.setNome("Dicas espetaculares");
+            categoriaExistente.setPaginas(paginasAdd);
+            
+            categoriaDAO.salvar(categoriaExistente);
+            
+            entityManager.getTransaction().commit();
+            
+            Categoria categoriaRecuperada = categoriaDAO.recuperar(categoriaExistente.getId());
+            
+            System.out.println("");
+            System.out.println("\nA categoria foi modificada: " + categoriaRecuperada.getNome());
+            System.out.println("\nE agora possui páginas: " + categoriaRecuperada.getPaginas());
             
             /**
              * Deletando o objeto criado acima
@@ -87,7 +117,7 @@ public class NHAFCategoriaTests {
             System.out.println("\nDeletando a categoria criada anteriormente...");
             entityManager.getTransaction().begin();
             
-            categoriaDAO.excluir(categoriaNova.getId());
+            categoriaDAO.excluir(categoriaRecuperada.getId());
             
             entityManager.getTransaction().commit();
             

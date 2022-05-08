@@ -2,7 +2,7 @@ package br.com.fiap.dao;
 
 import java.util.List;
 import br.com.fiap.needhelpapp.model.Categoria;
-import jakarta.persistence.EntityManager;
+import jakarta.persistence.*;
 
 /**
  * Classe DAO para persistência de objetos Categoria
@@ -37,11 +37,23 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> {
 	 * @return Um único resultado com o nome desejado
 	 */
 	public Categoria getByNameUnique(String nome) 
-	{		 
-		return (Categoria)this.em.createQuery(
-				"select e from Categoria e where e.nome = :nome"
-				).setParameter("nome", nome)
-				.getSingleResult();
+	{
+		try {
+			return (Categoria)this.em.createQuery(
+					"select e from Categoria e where e.nome = :nome"
+					).setParameter("nome", nome)
+					.getSingleResult();
+		}
+		catch(NonUniqueResultException ex) {
+			//throw new NonUniqueResultException(ex.getMessage());
+			System.out.println("A pesquisa retornou mais de um resultado para o parâmetro desejado: " + ex.getMessage());
+			return null;
+		}
+		catch(NoResultException ex) {
+			//throw new NoResultException(ex.getMessage());
+			System.out.println("Não foram encontrados resultados para o parâmetro desejado - " + ex.getMessage());
+			return null;
+		}
 	}
 	
 	/**

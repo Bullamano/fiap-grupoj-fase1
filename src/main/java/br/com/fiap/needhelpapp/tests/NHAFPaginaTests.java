@@ -59,12 +59,33 @@ public static void main(String[] args) {
             System.out.println(paginaDAO.recuperar(1));
             
             /**
+             * Pesquisa de página por um ID de uma categoria
+             */            
+            System.out.println("\nPesquisa por categoria (ID):");
+            List<Pagina> pesquisaCategId = paginaDAO.getByCategoria(1);
+            for(Pagina pag : pesquisaCategId)
+            {
+            	System.out.println(pag);
+            }
+            
+            /**
+             * Pesquisa de página por um objeto categoria
+             */            
+            System.out.println("\nPesquisa por categoria (objeto):");
+            Categoria categObj = categoriaDAO.recuperar(1);
+            List<Pagina> pesquisaCategObj = paginaDAO.getByCategoria(categObj);
+            for(Pagina pag : pesquisaCategObj)
+            {
+            	System.out.println(pag);
+            }
+            
+            /**
              * Criação de objeto no banco
              */
             entityManager.getTransaction().begin();
             
             Pagina paginaNova = new Pagina();
-            paginaNova.setNome("Tarefa inútil");
+            paginaNova.setNome("Página inútil");
             Categoria categPagNova = categoriaDAO.recuperar(1);
             paginaNova.setCategoria(categPagNova);
             

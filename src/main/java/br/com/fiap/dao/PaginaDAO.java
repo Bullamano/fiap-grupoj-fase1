@@ -4,6 +4,7 @@ import java.util.List;
 import br.com.fiap.needhelpapp.model.Categoria;
 import br.com.fiap.needhelpapp.model.Pagina;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 
 /**
  * Classe DAO para persistência de objetos Pagina
@@ -66,11 +67,10 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Pagina> getByCategoria(Categoria categoria) 
-	{		 
-		int categoriaId = categoria.getId();
+	{
 		return (List<Pagina>)this.em.createQuery(
-				"select e from Pagina e where e.categoria = :categoriaId"
-				).setParameter("categoriaId", categoriaId)
+				"select e from Pagina e where e.categoria = :categoria"
+				).setParameter("categoria", categoria)
 				.getResultList();
 	}
 	
@@ -81,10 +81,19 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Pagina> getByCategoria(Integer categoriaId) 
-	{		 
+	{
+		EntityManager entityManager = null;
+		
+		//Entity Manager
+    	entityManager =  Persistence.
+            createEntityManagerFactory("fiap-grupoj-atividade-fase1").
+            createEntityManager();
+		
+		Categoria categoria = new CategoriaDAO(entityManager).recuperar(categoriaId);
+		
 		return (List<Pagina>)this.em.createQuery(
-				"select e from Pagina e where e.categoria = :categoriaId"
-				).setParameter("categoriaId", categoriaId)
+				"select e from Pagina e where e.categoria = :categoria"
+				).setParameter("categoria", categoria)
 				.getResultList();
 	}
 	

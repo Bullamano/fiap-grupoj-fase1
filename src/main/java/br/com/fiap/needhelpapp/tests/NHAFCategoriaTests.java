@@ -12,7 +12,7 @@ import jakarta.persistence.Persistence;
  */
 public class NHAFCategoriaTests {
 	
-public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		EntityManager entityManager = null;
         try 
@@ -79,7 +79,7 @@ public static void main(String[] args) {
             /**
              * Deletando o objeto criado acima
              */
-            System.out.println("\nDeletando a categoria criada anteriormente:");
+            System.out.println("\nDeletando a categoria criada anteriormente...");
             entityManager.getTransaction().begin();
             categoriaDAO.excluir(categoriaNova.getId());
             entityManager.getTransaction().commit();

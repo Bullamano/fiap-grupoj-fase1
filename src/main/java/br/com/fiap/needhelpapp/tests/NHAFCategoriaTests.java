@@ -92,7 +92,7 @@ public class NHAFCategoriaTests {
             entityManager.getTransaction().begin();
             
             Categoria categoriaExistente = categoriaDAO.getByNameUnique("Dicas ruins demais");
-            System.out.println("A categoria " + categoriaExistente + " será modificada!");
+            System.out.println("\nA categoria " + categoriaExistente + " será modificada!");
             
             Pagina paginaExistente = paginaDAO.recuperar(1);
             Collection<Pagina> paginasAdd = new ArrayList<Pagina>();

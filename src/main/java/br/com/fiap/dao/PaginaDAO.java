@@ -78,15 +78,11 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	 * @param categoriaId ID de uma categoria
 	 * @return Lista de paginas relacionadas a uma categoria
 	 */
-	@SuppressWarnings("unchecked")
 	public List<Pagina> getByCategoria(EntityManager entityManager, Integer categoriaId) 
 	{		
 		Categoria categoria = new CategoriaDAO(entityManager).recuperar(categoriaId);
 		
-		return (List<Pagina>)this.em.createQuery(
-				"select e from Pagina e where e.categoria = :categoria"
-				).setParameter("categoria", categoria)
-				.getResultList();
+		return getByCategoria(categoria);
 	}
 	
 }

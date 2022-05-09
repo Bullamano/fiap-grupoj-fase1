@@ -44,7 +44,7 @@ public class NHAFProcedimentoTests {
             	System.out.println(pag);
             	List<Procedimento> listaProc = procedimentoDAO.getByPagina(entityManager, pag.getId(), Enums.order.asc);
             	for(Procedimento proc : listaProc){
-                	System.out.println("\t" + proc);
+                	System.out.println("\n\t" + proc);
                 }
             }
             

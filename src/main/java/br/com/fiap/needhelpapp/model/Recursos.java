@@ -146,18 +146,18 @@ public class Recursos {
 	@Override
 	public String toString() {
 		
-		String stringToReturn = id.toString();
+		String stringToReturn = id.toString() + " - Página: " + pagina.getNome();
 		
 		if(linkVideo != null && !(linkVideo.isEmpty() || linkVideo.isBlank())) {
-			stringToReturn = stringToReturn + " - " + linkVideo;
+			stringToReturn = stringToReturn + " - Vídeo: " + linkVideo;
 		}
 		
 		if(linkLeitura != null && !(linkLeitura.isEmpty() || linkLeitura.isBlank())) {
-			stringToReturn = stringToReturn + " - " + linkLeitura;
+			stringToReturn = stringToReturn + " - Leitura: " + linkLeitura;
 		}
 		
 		if(linkImagem != null && !(linkImagem.isEmpty() || linkImagem.isBlank())) {
-			stringToReturn = stringToReturn + " - " + linkImagem;
+			stringToReturn = stringToReturn + " - Imagem: " + linkImagem;
 		}
 		
 		return stringToReturn;

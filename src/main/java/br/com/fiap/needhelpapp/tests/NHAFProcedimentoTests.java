@@ -106,7 +106,7 @@ public class NHAFProcedimentoTests {
              */
             entityManager.getTransaction().begin();
             
-            Procedimento procedimentoExistente= procedimentoDAO.getByTituloUnique(procedimentoNovo.getTitulo());
+            Procedimento procedimentoExistente = procedimentoDAO.getByTituloUnique(procedimentoNovo.getTitulo());
             System.out.println("\nO procedimento " + procedimentoExistente + " será modificado!\n");          
             
             procedimentoExistente.setOrdem(2);
@@ -128,7 +128,7 @@ public class NHAFProcedimentoTests {
             /**
              * Deletando o objeto criado acima
              */
-            System.out.println("\nDeletando o procedimento criada anteriormente...");
+            System.out.println("\nDeletando o procedimento criado anteriormente...");
             entityManager.getTransaction().begin();
             
             procedimentoDAO.excluir(procedimentoExistente.getId());

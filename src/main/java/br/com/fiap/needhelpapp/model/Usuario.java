@@ -82,7 +82,7 @@ public class Usuario {
 	 * @param senha a senha a ser atribuida
 	 */
 	public void setSenha(String senha) {
-		
+		//TODO adicionar BCrypt ou algo semelhante. SHA-256 é suficiente apenas para um MVP 
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			byte[] hash = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
@@ -93,6 +93,7 @@ public class Usuario {
 			e.printStackTrace();
 			
 			//TODO : Inseguro. Apenas aqui para um MVP
+			//Correto seria soltar uma exceção
 			this.senha = senha;
 		}
 	}
@@ -119,4 +120,25 @@ public class Usuario {
 		return id + " - " + login;
 	}
 	
+	/**
+	 * Método para verificar a senha de um usuário
+	 * @param Senha a senha a ser testada
+	 * @return Um booleano indicando se a senha está correta ou não
+	 */
+	public Boolean testSenha(String senha) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
+			String senhaHash = new String(Hex.encode(hash));
+						
+			return (senhaHash.equals(this.senha));
+		} 
+		catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			
+			//TODO : Incorreto. Apenas aqui para um MVP
+			//Correto seria soltar uma exceção
+			return false;
+		}
+	}	
 }

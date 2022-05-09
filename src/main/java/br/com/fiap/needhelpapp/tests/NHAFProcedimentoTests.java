@@ -76,9 +76,71 @@ public class NHAFProcedimentoTests {
             System.out.println("\nPesquisa por nome (parcial):");
             System.out.println(procedimentoDAO.getByTituloPartial("P"));
             
-          //TODO adicionar INSERT, UPDATE e DELETE de um registro
+            /**
+             * Criação de objeto no banco
+             */
+            entityManager.getTransaction().begin();
             
+            Procedimento procedimentoNovo = new Procedimento();
+            procedimentoNovo.setTitulo("Como voar");          
+            procedimentoNovo.setOrdem(1);
+            procedimentoNovo.setTarefas("Se jogue no chão e erre.");
+            Pagina paginaProcNovo = paginaDAO.recuperar(1);
+            procedimentoNovo.setPagina(paginaProcNovo);
             
+            procedimentoDAO.salvar(procedimentoNovo);
+            
+            entityManager.getTransaction().commit();
+            
+            System.out.println("\nPesquisando o novo procedimento:");
+            System.out.println(procedimentoDAO.getByTituloUnique(procedimentoNovo.getTitulo()));
+            List<Procedimento> procPostInsert = procedimentoDAO.listar();
+            System.out.println("\nListagem dos procedimentos após o insert:");
+            for(Procedimento proc : procPostInsert)
+            {
+            	System.out.println(proc);
+            }
+            
+            /**
+             * Modificando um objeto já presente no banco
+             */
+            entityManager.getTransaction().begin();
+            
+            Procedimento procedimentoExistente= procedimentoDAO.getByTituloUnique(procedimentoNovo.getTitulo());
+            System.out.println("\nO procedimento " + procedimentoExistente + " será modificado!\n");          
+            
+            procedimentoExistente.setOrdem(2);
+            procedimentoExistente.setTitulo("Como voltar no tempo");
+            procedimentoExistente.setTarefas("Passo 1: compre um Delorean...");
+            
+            Pagina pagProcExistente = paginaDAO.recuperar(2);
+            procedimentoExistente.setPagina(pagProcExistente);
+            
+            procedimentoDAO.salvar(procedimentoExistente);
+            
+            entityManager.getTransaction().commit();
+            
+            Procedimento procedimentoRecuperado = procedimentoDAO.recuperar(procedimentoExistente.getId());
+            
+            System.out.println("");
+            System.out.println("\nO procedimento foi modificado: " + procedimentoRecuperado);
+            
+            /**
+             * Deletando o objeto criado acima
+             */
+            System.out.println("\nDeletando o procedimento criada anteriormente...");
+            entityManager.getTransaction().begin();
+            
+            procedimentoDAO.excluir(procedimentoExistente.getId());
+            
+            entityManager.getTransaction().commit();
+            
+            List<Procedimento> procPostDelete = procedimentoDAO.listar();
+            System.out.println("\nListagem dos procedimentos após o delete:");
+            for(Procedimento proc : procPostDelete)
+            {
+            	System.out.println(proc);
+            }            
         } 
         catch (Exception e)
         {

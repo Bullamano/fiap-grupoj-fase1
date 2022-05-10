@@ -8,6 +8,9 @@ import br.com.fiap.needhelpapp.model.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
+/**
+ * Testes referentes a Paginas
+ */
 public class NHAFPaginaTests {
 	
 	public static void main(String[] args) {

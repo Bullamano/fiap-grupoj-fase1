@@ -9,6 +9,9 @@ import br.com.fiap.dao.ProcedimentoDAO;
 import br.com.fiap.needhelpapp.model.Pagina;
 import br.com.fiap.needhelpapp.model.Procedimento;
 
+/**
+ * Testes referentes a Procedimentos
+ */
 public class NHAFProcedimentoTests {
 
 	public static void main(String[] args) {

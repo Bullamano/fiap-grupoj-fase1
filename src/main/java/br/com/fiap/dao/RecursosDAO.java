@@ -7,8 +7,15 @@ import br.com.fiap.needhelpapp.model.Recursos;
 import br.com.fiap.utils.Enums;
 import jakarta.persistence.EntityManager;
 
+/**
+ * Classe DAO para persistência de objetos Recursos
+ */
 public class RecursosDAO extends GenericDAO<Recursos, Integer> {
 	
+	/**
+	 * Construtor
+	 * @param entityManager Entity Manager
+	 */
 	public RecursosDAO(EntityManager entityManager) {
 		super(entityManager);
 	}

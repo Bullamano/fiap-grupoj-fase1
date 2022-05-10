@@ -10,6 +10,9 @@ import br.com.fiap.utils.Enums;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
+/**
+ * Testes referentes a Recursos
+ */
 public class NHAFRecursosTests {
 	
 	public static void main(String[] args) {

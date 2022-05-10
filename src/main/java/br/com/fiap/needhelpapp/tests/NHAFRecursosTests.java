@@ -46,7 +46,7 @@ public class NHAFRecursosTests {
             System.out.println("\nListagem de todos os recursos por página:");
             for(Pagina pag : listaPag){
             	System.out.println(pag);
-            	List<Recursos> listaRec = recursosDAO.getByPagina(entityManager, pag.getId(), Enums.order.desc);
+            	List<Recursos> listaRec = recursosDAO.getByPagina(pag.getId(), Enums.order.desc);
             	for(Recursos rec : listaRec){
                 	System.out.println("\n\t" + rec);
                 }

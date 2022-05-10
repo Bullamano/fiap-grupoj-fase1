@@ -68,7 +68,7 @@ public class NHAFPaginaTests {
              * Pesquisa de página por um ID de uma categoria
              */            
             System.out.println("\nPesquisa por categoria (ID):");
-            List<Pagina> pesquisaCategId = paginaDAO.getByCategoria(entityManager, 1);
+            List<Pagina> pesquisaCategId = paginaDAO.getByCategoria(1);
             for(Pagina pag : pesquisaCategId)
             {
             	System.out.println(pag);
@@ -113,7 +113,7 @@ public class NHAFPaginaTests {
              */
             entityManager.getTransaction().begin();
             
-            Pagina paginaExistente = paginaDAO.getByNameUnique("Página inútil");
+            Pagina paginaExistente = paginaDAO.getByNameUnique(paginaNova.getNome());
             System.out.println("\nA página " + paginaExistente + " será modificada!\n");
             
             Procedimento procedimentoExistente = procedimentoDAO.recuperar(1);

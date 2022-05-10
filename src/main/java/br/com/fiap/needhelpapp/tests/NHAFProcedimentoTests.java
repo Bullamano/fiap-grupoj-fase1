@@ -45,7 +45,7 @@ public class NHAFProcedimentoTests {
             System.out.println("\nListagem de todos os procedimentos por página:");
             for(Pagina pag : listaPag){
             	System.out.println(pag);
-            	List<Procedimento> listaProc = procedimentoDAO.getByPagina(entityManager, pag.getId(), Enums.order.asc);
+            	List<Procedimento> listaProc = procedimentoDAO.getByPagina(pag.getId(), Enums.order.asc);
             	for(Procedimento proc : listaProc){
                 	System.out.println("\n\t" + proc);
                 }

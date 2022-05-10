@@ -56,9 +56,9 @@ public class RecursosDAO extends GenericDAO<Recursos, Integer> {
 	 * @param ordem Se as informações devem ser retornadas em ordem ascendente, decrescente ou irrelevante (conforme está no banco)
 	 * @return Lista de recursos pertencentes a uma Pagina
 	 */
-	public List<Recursos> getByPagina(EntityManager entityManager, Integer paginaId, Enums.order ordem) 
+	public List<Recursos> getByPagina(Integer paginaId, Enums.order ordem) 
 	{
-    	Pagina pagina = new PaginaDAO(entityManager).recuperar(paginaId);
+    	Pagina pagina = new PaginaDAO(this.em).recuperar(paginaId);
     	
     	return getByPagina(pagina, ordem);
 	}

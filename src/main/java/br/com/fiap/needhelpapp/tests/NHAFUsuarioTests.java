@@ -15,6 +15,7 @@ import jakarta.persistence.Persistence;
  * Testes referentes a Usuarios
  */
 public class NHAFUsuarioTests {
+	
 	public static void main(String[] args) {
 		
 		EntityManager entityManager = null;

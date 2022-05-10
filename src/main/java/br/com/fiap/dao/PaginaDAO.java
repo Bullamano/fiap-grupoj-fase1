@@ -1,8 +1,13 @@
 package br.com.fiap.dao;
 
+import java.util.Collection;
 import java.util.List;
 import br.com.fiap.needhelpapp.model.Categoria;
+import br.com.fiap.needhelpapp.model.Favorito;
 import br.com.fiap.needhelpapp.model.Pagina;
+import br.com.fiap.needhelpapp.model.Procedimento;
+import br.com.fiap.needhelpapp.model.Recursos;
+import br.com.fiap.utils.Enums;
 import jakarta.persistence.*;
 
 /**
@@ -97,4 +102,30 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 		return getByCategoria(categoria);
 	}
 	
+	/**
+	 * Exclui uma Pagina garantindo a exclusão também de seus Favoritos, Procedimentos e Recursos.
+	 * @param chave Chave (ID) do banco de um registro.
+	 */
+	public void excluir(Pagina pagina) {
+		FavoritoDAO favoritoDAO = new FavoritoDAO(this.em);
+		Collection<Favorito> collectionFavoritos = favoritoDAO.getByPagina(pagina);
+		for(Favorito fav : collectionFavoritos) {
+			favoritoDAO.excluir(fav.getId());
+		}
+		
+		RecursosDAO recursosDAO = new RecursosDAO(this.em);
+		Collection<Recursos> collectionRecursos = recursosDAO.getByPagina(pagina, Enums.order.irrelevant);
+		for(Recursos rec : collectionRecursos) {
+			recursosDAO.excluir(rec.getId());
+		}
+		
+		ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO(this.em);
+		Collection<Procedimento> collectionProcedimentos = procedimentoDAO.getByPagina(pagina, Enums.order.irrelevant);
+		for(Procedimento proc : collectionProcedimentos) {
+			procedimentoDAO.excluir(proc.getId());
+		}
+				
+		Integer chave = pagina.getId();
+		super.excluir(chave);
+	}
 }

@@ -117,7 +117,7 @@ public class NHAFCategoriaTests {
             System.out.println("\nDeletando a categoria criada anteriormente...");
             entityManager.getTransaction().begin();
             
-            categoriaDAO.excluir(categoriaRecuperada.getId());
+            categoriaDAO.excluir(categoriaRecuperada);
             
             entityManager.getTransaction().commit();
             

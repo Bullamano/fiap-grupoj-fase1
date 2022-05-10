@@ -3,6 +3,7 @@ package br.com.fiap.needhelpapp.model;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.bouncycastle.util.encoders.Hex;
@@ -102,7 +103,12 @@ public class Usuario {
 	 * @return os favoritos
 	 */
 	public Collection<Favorito> getFavoritos() {
-		return favoritos;
+		if(favoritos != null) {
+			return favoritos;
+		}
+		else {
+			return new ArrayList<Favorito>();
+		}
 	}
 
 	/**

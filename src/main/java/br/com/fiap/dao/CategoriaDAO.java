@@ -1,7 +1,9 @@
 package br.com.fiap.dao;
 
+import java.util.Collection;
 import java.util.List;
 import br.com.fiap.needhelpapp.model.Categoria;
+import br.com.fiap.needhelpapp.model.Pagina;
 import jakarta.persistence.*;
 
 /**
@@ -68,5 +70,21 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> {
 				"select e from Categoria e where e.nome like concat('%', :nome,'%')"
 				).setParameter("nome", nome)
 				.getResultList();
+	}
+	
+	/**
+	 * Exclui uma Categoria garantindo a exclusão também de seus Favoritos, Paginas, Procedimentos e Recursos.
+	 * @param chave Chave (ID) do banco de um registro.
+	 */
+	public void excluir(Categoria categoria) {
+		PaginaDAO paginaDAO = new PaginaDAO(this.em);
+		Collection<Pagina> collectionPaginas = paginaDAO.getByCategoria(categoria);
+		for(Pagina pag : collectionPaginas) {
+			//Favoritos, Procedimentos e Recursos são excluídos na PaginaDAO
+			paginaDAO.excluir(pag);
+		}
+				
+		Integer chave = categoria.getId();
+		super.excluir(chave);
 	}
 }

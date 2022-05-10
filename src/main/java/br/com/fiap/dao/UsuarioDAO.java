@@ -1,6 +1,9 @@
 package br.com.fiap.dao;
 
+import java.util.Collection;
 import java.util.List;
+
+import br.com.fiap.needhelpapp.model.Favorito;
 import br.com.fiap.needhelpapp.model.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -78,8 +81,11 @@ public class UsuarioDAO extends GenericDAO<Usuario, Integer> {
 	 */
 	public void excluir(Usuario usuario) {
 		FavoritoDAO favoritoDAO = new FavoritoDAO(this.em);
-		favoritoDAO.excluirByUsuarioId(usuario);
-		
+		Collection<Favorito> collectionFavoritos = favoritoDAO.getByUsuario(usuario);
+		for(Favorito fav : collectionFavoritos) {
+			favoritoDAO.excluir(fav.getId());
+		}
+				
 		Integer chave = usuario.getId();
 		super.excluir(chave);
 	}

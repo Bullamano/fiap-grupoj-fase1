@@ -1,5 +1,6 @@
 package br.com.fiap.needhelpapp.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.*;
@@ -97,7 +98,12 @@ public class Pagina {
 	 * @return os procedimentos
 	 */
 	public Collection<Procedimento> getProcedimentos() {
-		return procedimentos;
+		if(procedimentos != null) {
+			return procedimentos;
+		}
+		else {
+			return new ArrayList<Procedimento>();
+		}		
 	}
 
 	/**
@@ -111,7 +117,12 @@ public class Pagina {
 	 * @return os recursos
 	 */
 	public Collection<Recursos> getRecursos() {
-		return recursos;
+		if(recursos != null) {
+			return recursos;
+		}
+		else {
+			return new ArrayList<Recursos>();
+		}
 	}
 
 	/**
@@ -125,7 +136,12 @@ public class Pagina {
 	 * @return os favoritos
 	 */
 	public Collection<Favorito> getFavoritos() {
-		return favoritos;
+		if(favoritos != null) {
+			return favoritos;
+		}
+		else {
+			return new ArrayList<Favorito>();
+		}
 	}
 
 	/**

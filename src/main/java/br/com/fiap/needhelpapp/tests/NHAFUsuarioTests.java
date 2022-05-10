@@ -1,5 +1,6 @@
 package br.com.fiap.needhelpapp.tests;
 
+import java.util.Collection;
 import java.util.List;
 import br.com.fiap.dao.FavoritoDAO;
 import br.com.fiap.dao.PaginaDAO;
@@ -102,9 +103,11 @@ public class NHAFUsuarioTests {
 	        Favorito favoritoUsuarioExistente = new Favorito();
 	        favoritoUsuarioExistente.setPagina(paginaFavoritoUsuario);
 	        favoritoUsuarioExistente.setUsuario(usuarioExistente);
-	        //Collection<Favorito> favoritoCollection = new ArrayList<Favorito>();
-	        //favoritoCollection.add(favoritoUsuarioExistente);
-	        favoritoDAO.salvar(favoritoUsuarioExistente);	        
+	        
+	        Collection<Favorito> favoritoCollection = usuarioExistente.getFavoritos();
+	        favoritoCollection.add(favoritoUsuarioExistente);
+	        
+	        usuarioExistente.setFavoritos(favoritoCollection);      
 	        
 	        usuarioExistente.setLogin("Papyrus");
 	        usuarioExistente.setSenha("nyehehe");
@@ -113,7 +116,14 @@ public class NHAFUsuarioTests {
           
 	        entityManager.getTransaction().commit();
 	        
-	        //TODO verificar por quê os favoritos estão como null
+	        //Salvamento do Favorito separadamente
+	        //(usar mais de um salvar por Transaction pode causar erros)
+	        entityManager.getTransaction().begin();
+	        
+	        favoritoDAO.salvar(favoritoUsuarioExistente);
+	        
+	        entityManager.getTransaction().commit();
+	        
 	        Usuario usuarioRecuperado = usuarioDAO.recuperar(usuarioExistente.getId());
 	        System.out.println("");
           	System.out.println("\nO usuario foi modificado: " + usuarioRecuperado);
@@ -122,9 +132,24 @@ public class NHAFUsuarioTests {
           	System.out.println("\n- Hash de senha: " + usuarioRecuperado.getSenha());
           	System.out.println("\n- Favoritos: " + usuarioRecuperado.getFavoritos());
           	
-          	//TODO exclusão de registros
-          	//usuarioDAO.excluir(usuarioExistente);
-          
+          	/**
+             * Deletando o objeto criado acima
+             */
+          	System.out.println("\nDeletando o usuário criado anteriormente...");
+            entityManager.getTransaction().begin();
+            
+            //Método diferente do presente na GenericDAO pois este exclui primeiramente
+            //os favoritos do usuário e só depois o exclui, prevenindo erros
+            usuarioDAO.excluir(usuarioRecuperado);
+            
+            entityManager.getTransaction().commit();
+            
+            List<Usuario> usrPostDelete = usuarioDAO.listar();
+            System.out.println("\nListagem dos usuários após o delete:");
+            for(Usuario usr : usrPostDelete)
+            {
+            	System.out.println(usr);
+            }          
         }
         catch (Exception e)
         {

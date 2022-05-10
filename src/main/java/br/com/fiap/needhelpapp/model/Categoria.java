@@ -1,6 +1,8 @@
 package br.com.fiap.needhelpapp.model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -62,7 +64,12 @@ public class Categoria {
 	 * @return as paginas dessa categoria
 	 */
 	public Collection<Pagina> getPaginas() {
-		return paginas;
+		if(paginas != null) {
+			return paginas;
+		}
+		else {
+			return new ArrayList<Pagina>();
+		}
 	}
 
 	/**

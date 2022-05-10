@@ -151,8 +151,8 @@ public class NHAFPaginaTests {
              */
             System.out.println("\nDeletando a página criada anteriormente...");
             entityManager.getTransaction().begin();
-            
-            paginaDAO.excluir(paginaRecuperada.getId());
+                        
+            paginaDAO.excluir(paginaRecuperada);
             
             entityManager.getTransaction().commit();
             

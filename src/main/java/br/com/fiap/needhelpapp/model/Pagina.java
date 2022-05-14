@@ -3,6 +3,7 @@ package br.com.fiap.needhelpapp.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import br.com.fiap.dao.UsuarioDAO;
 import jakarta.persistence.*;
 
 /**
@@ -33,6 +34,28 @@ public class Pagina {
 	 */
 	@Column(name = "PG_NOME", length = 50)
 	private String nome;
+	
+	/**
+	 * O usuário criador da página.
+	 * Como usuários podem ser excluídos mas suas páginas criadas
+	 * devem permanecer, o ID original e autor são extraídos e salvos
+	 * no banco. O objeto por si, não possui relação, mas pode ser procurado
+	 * e atribuído através do ID salvo na criação da página.
+	 */
+	@Transient
+	private Usuario Autor;
+	
+	/**
+	 * ID do usuário autor da página
+	 */
+	@Column(name = "PG_IDAUTOR")
+	private int idAutor;
+	
+	/**
+	 * Nome do usuário autor da página
+	 */
+	@Column(name = "PG_NOMEAUTOR", length = 50)
+	private String nomeAutor;
 	
 	/**
 	 * Procedimentos relacionados a pagina
@@ -85,6 +108,74 @@ public class Pagina {
 	 */
 	public String getNome() {
 		return nome;
+	}
+	
+	/**
+	 * @return o usuário autor
+	 */
+	public Usuario getAutor(EntityManager em) {
+		if(Autor != null) {
+			return Autor;
+		}
+		else {
+			int searchId = this.getIdAutor();
+			UsuarioDAO usuarioDAO = new UsuarioDAO(em);
+			Usuario searchedUser = usuarioDAO.recuperar(searchId);
+			if(searchedUser != null) {
+				return searchedUser; 
+			}
+			else {
+				//TODO: Para efeitos de um MVP e simplicidade,
+				//ao invés de retornar uma exception, retornamos um null
+				
+				//throw new Exception("Usuário não encontrado");
+				return null;
+			}
+		}
+	}
+
+	/**
+	 * Usado para setar o autor.
+	 * @param autor o usuário autor a ser atribuido
+	 */
+	public void setAutor(Usuario autor) {
+		Autor = autor;
+		this.setIdAutor(autor.getId());
+		this.setNomeAutor(autor.getLogin());
+	}
+
+	/**
+	 * @return o ID do usuário autor
+	 */
+	public int getIdAutor() {
+		return idAutor;
+	}
+
+	/**
+	 * Classe que não deve ser utilizada externamente. Para
+	 * setar informações de autor, deve ser utilizado o método
+	 * SetAutor().
+	 * @param idAutor to ID do usuário autor a ser atribuido
+	 */
+	private void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
+	}
+
+	/**
+	 * @return o nome do autor
+	 */
+	public String getNomeAutor() {
+		return nomeAutor;
+	}
+
+	/**
+	 * Classe que não deve ser utilizada externamente. Para
+	 * setar informações de autor, deve ser utilizado o método
+	 * SetAutor().
+	 * @param nomeAutor o nome do autor a ser atribuido
+	 */
+	private void setNomeAutor(String nomeAutor) {
+		this.nomeAutor = nomeAutor;
 	}
 
 	/**

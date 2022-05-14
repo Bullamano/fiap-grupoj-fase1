@@ -29,6 +29,7 @@ public class NHAFPaginaTests {
         	ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO(entityManager);
         	RecursosDAO recursosDAO = new RecursosDAO(entityManager);
         	FavoritoDAO favoritoDAO = new FavoritoDAO(entityManager);
+        	UsuarioDAO usuarioDAO = new UsuarioDAO(entityManager);
 
         	/**
         	 * Listagem de todas as entradas no banco de dados
@@ -86,6 +87,18 @@ public class NHAFPaginaTests {
             }
             
             /**
+             * Pesquisa por uma string parcial do nome do autor de uma página
+             */            
+            System.out.println("\nPesquisa por nome (parcial):");
+            System.out.println(paginaDAO.getByNomeAutor("1"));
+            
+            /**
+             * Pesquisa por um ID do usuário autor de uma página
+             */            
+            System.out.println("\nPesquisa por nome (parcial):");
+            System.out.println(paginaDAO.getByIdAutor(2));
+            
+            /**
              * Criação de objeto no banco
              */
             entityManager.getTransaction().begin();
@@ -94,6 +107,9 @@ public class NHAFPaginaTests {
             paginaNova.setNome("Página inútil");
             Categoria categPagNova = categoriaDAO.recuperar(1);
             paginaNova.setCategoria(categPagNova);
+            
+            Usuario usuarioPagNova = usuarioDAO.recuperar(1);
+            paginaNova.setAutor(usuarioPagNova);
             
             paginaDAO.salvar(paginaNova);
             
@@ -128,10 +144,13 @@ public class NHAFPaginaTests {
             Collection<Favorito> favoritoCollection = new ArrayList<Favorito>();
             favoritoCollection.add(favoritosExistente);
             
+            Usuario usuarioPagExistente = usuarioDAO.recuperar(2);
+            
             paginaExistente.setNome("Página maravilhosa");
             paginaExistente.setProcedimentos(procedimentosCollection);
             paginaExistente.setRecursos(recursosCollection);
             paginaExistente.setFavoritos(favoritoCollection);
+            paginaExistente.setAutor(usuarioPagExistente);
             
             paginaDAO.salvar(paginaExistente);
             
@@ -145,6 +164,7 @@ public class NHAFPaginaTests {
             System.out.println("\n\tProcedimentos: " + paginaRecuperada.getProcedimentos());
             System.out.println("\n\tRecursos: " + paginaRecuperada.getRecursos());
             System.out.println("\n\tFavoritos: " + paginaRecuperada.getFavoritos());
+            System.out.println("\n\tAutor: " + paginaRecuperada.getAutor(entityManager));
             
             /**
              * Deletando o objeto criado acima

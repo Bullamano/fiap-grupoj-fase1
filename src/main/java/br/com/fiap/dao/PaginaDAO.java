@@ -77,6 +77,34 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	}
 	
 	/**
+	 * Pesquisa de Pagina por ID de Autor
+	 * @param idAutor ID do autor da página
+	 * @return uma Lista de paginas pertencentes ao ID desejado
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Pagina> getByIdAutor(int idAutor) 
+	{		 
+		return (List<Pagina>)this.em.createQuery(
+				"select e from Pagina e where e.idAutor = :idAutor"
+				).setParameter("idAutor", idAutor)
+				.getResultList();
+	}
+	
+	/**
+	 * Pesquisa de Pagina por um nome (completo ou parcial) do autor
+	 * @param nome String com o nome (completo ou parcial) do autor
+	 * @return uma Lista com as paginas cujos nomes de autor contenham a string desejada
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Pagina> getByNomeAutor(String nomeAutor) 
+	{		 
+		return (List<Pagina>)this.em.createQuery(
+				"select e from Pagina e where e.nomeAutor like concat('%', :nomeAutor,'%')"
+				).setParameter("nomeAutor", nomeAutor)
+				.getResultList();
+	}
+	
+	/**
 	 * Pesquisa de Pagina de acordo com uma categoria
 	 * @param categoria Objeto Categoria
 	 * @return Lista de paginas relacionadas a uma categoria

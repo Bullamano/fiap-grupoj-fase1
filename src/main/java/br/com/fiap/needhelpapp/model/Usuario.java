@@ -113,8 +113,8 @@ public class Usuario {
 		catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			
-			//TODO : Inseguro. Apenas aqui para um MVP
-			//Correto seria soltar uma exceção
+			//TODO : Apenas aqui para um MVP
+			//O mais correto seria soltar uma exceção
 			this.senha = senha;
 		}
 	}
@@ -162,8 +162,8 @@ public class Usuario {
 		catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			
-			//TODO : Incorreto. Apenas aqui para um MVP
-			//Correto seria soltar uma exceção
+			//TODO : Apenas aqui para um MVP
+			//O mais correto seria soltar uma exceção
 			return false;
 		}
 	}	

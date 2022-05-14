@@ -10,7 +10,7 @@ O projeto é de uma aplicação para ajudar com tarefas corriqueiras. Usuários 
 Neste projeto, estamos usando Java 17, JPA e banco de dados MySQL. O schema do banco (que está com o nome provisório da aplicação de "Need Help App") se encontra abaixo:
 
 <p align="center">
-  <img src="https://i.ibb.co/vVRbjFs/20220505-Need-Help-App-DBschema.png" alt="NeedHelpAppSchema"/>
+  <img src="./NeedHelpAppDBschema.png" alt="NeedHelpAppSchema"/>
 </p>
 
 ## Como rodar o projeto

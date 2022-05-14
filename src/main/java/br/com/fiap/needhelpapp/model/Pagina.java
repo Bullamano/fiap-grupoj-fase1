@@ -118,17 +118,23 @@ public class Pagina {
 			return Autor;
 		}
 		else {
-			int searchId = this.getIdAutor();
-			UsuarioDAO usuarioDAO = new UsuarioDAO(em);
-			Usuario searchedUser = usuarioDAO.recuperar(searchId);
-			if(searchedUser != null) {
-				return searchedUser; 
+			try {
+				int searchId = this.getIdAutor();
+				UsuarioDAO usuarioDAO = new UsuarioDAO(em);
+				Usuario searchedUser = usuarioDAO.recuperar(searchId);
+				if(searchedUser != null) {
+					return searchedUser;
+				}
+				else {
+					//TODO: Para efeitos de um MVP e simplicidade,
+					//ao invés de retornar uma exception, retornamos um null
+					
+					//throw new Exception("Usuário não encontrado");
+					return null;
+				}
 			}
-			else {
-				//TODO: Para efeitos de um MVP e simplicidade,
-				//ao invés de retornar uma exception, retornamos um null
-				
-				//throw new Exception("Usuário não encontrado");
+			catch(Exception ex) {
+				System.out.println("O usuário procurado não existe - " + ex.getMessage());
 				return null;
 			}
 		}

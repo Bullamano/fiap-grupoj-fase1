@@ -182,6 +182,55 @@ public class NHAFPaginaTests {
             {
             	System.out.println(pag);
             }
+            
+            /**
+             * Criando uma página e deletando seu usuário
+             * (páginas devem ser mantidas mesmo após a exclusão de seu autor)
+             */
+            //Criação
+            entityManager.getTransaction().begin();
+            
+            Usuario usuarioPagEterna = new Usuario();
+            usuarioPagEterna.setLogin("User volátil");
+            usuarioPagEterna.setSenha("senhaSecreta");
+            usuarioPagEterna.setEmail("email@email.com");
+            
+            usuarioDAO.salvar(usuarioPagEterna);
+            
+            entityManager.getTransaction().commit();
+            
+            //Salvamento da Pagina separadamente
+            //(usar mais de um salvar por Transaction pode causar erros)
+            entityManager.getTransaction().begin();
+            
+            Pagina paginaEterna = new Pagina();
+            paginaEterna.setNome("Página eterna");
+            
+            Categoria categPagEterna = categoriaDAO.recuperar(1);
+            paginaEterna.setCategoria(categPagEterna);
+            
+            paginaEterna.setAutor(usuarioPagEterna);
+            
+            paginaDAO.salvar(paginaEterna);
+            
+            entityManager.getTransaction().commit();
+            
+            System.out.println("A página " + paginaEterna + " foi criada!");
+            System.out.println("O autor da página criada é: " + paginaEterna.getAutor(entityManager));
+            
+            //Exclusão do usuário
+            entityManager.getTransaction().begin();
+            
+            usuarioDAO.excluir(usuarioPagEterna);
+            
+            entityManager.getTransaction().commit();
+            
+            //A página deve ser mantida mesmo o usuário não existindo mais
+            Pagina paginaSemUser = paginaDAO.getByNameUnique(paginaEterna.getNome());
+            System.out.println("A página " + paginaSemUser + " ainda existe!");
+            System.out.println("O ID original do usuário autor é " + paginaSemUser.getIdAutor());
+            System.out.println("O nome do usuário autor é " + paginaSemUser.getNomeAutor());
+            System.out.println("Essas informações continuam no banco mesmo o usuário tendo sido excluído --> " + usuarioDAO.recuperar(usuarioPagEterna.getId()));
         } 
         catch (Exception e)
         {

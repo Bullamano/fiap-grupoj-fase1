@@ -16,26 +16,33 @@ VALUES
 INSERT INTO `needhelpappfiap`.`nhaf_paginas`
 (`PG_ID`,
 `PG_CTG_ID`,
-`PG_NOME`)
+`PG_NOME`,
+`PG_AUTOR`)
 VALUES
 (1,
 1,
-'Arroz com feijão'),
+'Arroz com feijão',
+'Usuário 1'),
 (2,
 1,
-'Lasagna'),
+'Lasagna',
+'Usuário 1'),
 (3,
 2,
-'Como desentupir uma privada'),
+'Como desentupir uma privada',
+'Josué'),
 (4,
 3,
-'Nós de gravata'),
+'Nós de gravata',
+'O Pai'),
 (5,
 3,
-'Como dobrar camisetas de um jeito eficiente'),
+'Como dobrar camisetas de um jeito eficiente',
+'O Tio'),
 (6,
 4,
-'Lugares para se visitar em São Paulo');
+'Lugares para se visitar em São Paulo',
+'Usuário 2');
 
 -- Populando a tabela nhaf_procedimentos
 INSERT INTO `needhelpappfiap`.`nhaf_procedimentos`

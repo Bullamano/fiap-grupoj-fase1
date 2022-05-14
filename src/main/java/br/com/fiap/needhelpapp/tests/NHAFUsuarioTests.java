@@ -72,6 +72,7 @@ public class NHAFUsuarioTests {
             
         	Usuario usuarioNovo = new Usuario();
         	usuarioNovo.setLogin("Sans");
+        	usuarioNovo.setEmail("skeleton@underground.com");
         	usuarioNovo.setSenha("bones");
 
         	usuarioDAO.salvar(usuarioNovo);
@@ -88,9 +89,9 @@ public class NHAFUsuarioTests {
 	        /**
 	         * Teste de senha
 	         */
-	        System.out.println(usuarioNovo.getSenha());
-	        System.out.println(usuarioNovo.testSenha("bones"));
-	        System.out.println(usuarioNovo.testSenha("determination"));
+	        System.out.println("\nHash da senha: " + usuarioNovo.getSenha());
+	        System.out.println("Teste com a senha correta: " + usuarioNovo.testSenha("bones"));
+	        System.out.println("Teste com a senha errada: " + usuarioNovo.testSenha("determination"));
 	        
 	        /**
              * Modificando um objeto já presente no banco
@@ -111,6 +112,7 @@ public class NHAFUsuarioTests {
 	        usuarioExistente.setFavoritos(favoritoCollection);      
 	        
 	        usuarioExistente.setLogin("Papyrus");
+	        usuarioExistente.setEmail("guard@underground.com");
 	        usuarioExistente.setSenha("nyehehe");
 	        
 	        usuarioDAO.salvar(usuarioExistente);
@@ -130,6 +132,7 @@ public class NHAFUsuarioTests {
           	System.out.println("\nO usuario foi modificado: " + usuarioRecuperado);
           	System.out.println("\nE agora possui:");
           	System.out.println("\n- Login: " + usuarioRecuperado.getLogin());
+          	System.out.println("\n- Email: " + usuarioRecuperado.getEmail());
           	System.out.println("\n- Hash de senha: " + usuarioRecuperado.getSenha());
           	System.out.println("\n- Favoritos: " + usuarioRecuperado.getFavoritos());
           	

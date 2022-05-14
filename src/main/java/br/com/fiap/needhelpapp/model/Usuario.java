@@ -33,6 +33,12 @@ public class Usuario {
 	private String login;
 	
 	/**
+	 * Email do usuário
+	 */
+	@Column(name="USR_EMAIL", length = 50)
+	private String email;
+	
+	/**
 	 * Hash da senha do usuário
 	 */
 	@Column(name = "USR_SENHA", length = 200)
@@ -70,6 +76,20 @@ public class Usuario {
 	 */
 	public void setLogin(String login) {
 		this.login = login;
+	}
+
+	/**
+	 * @return o email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email o email a ser atribuído
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/**

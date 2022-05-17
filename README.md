@@ -30,7 +30,11 @@ Foi criada também uma classe de enums para conveniência e organização (além
 ## Como rodar o projeto
 Na pasta "dbScripts", exitem alguns scripts MySQL para criação do banco que será usado. Basta rodá-los em ordem de acordo com os índices em seus nomes e será criado o banco de dados inicial para os testes.<br/>
 Em seguida, no arquivo persistence.xml ("fiap-grupoj-fase1/src/main/java/META-INF/"), preencha as credenciais de usuário e senha para o banco local a ser usado.<br/>
-Por fim, para realizar os testes de persistência, rode os arquivos Java localizados em "fiap-grupoj-fase1/src/main/java/br/com/fiap/needhelpapp/tests/".<br/><br/>
+Por fim, para realizar os testes de persistência, rode os arquivos Java localizados em "fiap-grupoj-fase1/src/main/java/br/com/fiap/needhelpapp/tests/". Nesta pasta há dois tipos de testes:
+- NHAF{{Objeto}}Tests: estes são os testes visuais com prints no console do que está sendo feito.
+- NHAF{{Objeto}}UnitTests: estes são os testes em formato de teste unitário.
+<br/><br/>
+
 Boa sorte e bons testes.
 
 <p align="center">

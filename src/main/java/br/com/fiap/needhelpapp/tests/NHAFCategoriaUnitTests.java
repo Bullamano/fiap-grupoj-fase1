@@ -1,20 +1,19 @@
 package br.com.fiap.needhelpapp.tests;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-
 import br.com.fiap.dao.CategoriaDAO;
 import br.com.fiap.dao.PaginaDAO;
 import br.com.fiap.needhelpapp.model.Categoria;
 import br.com.fiap.needhelpapp.model.Pagina;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 

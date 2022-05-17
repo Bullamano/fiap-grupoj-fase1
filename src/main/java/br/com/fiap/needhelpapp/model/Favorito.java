@@ -33,7 +33,7 @@ public class Favorito {
 	private Pagina pagina;
 
 	/**
-	 * @return o id
+	 * @return Integer - o id
 	 */
 	public Integer getId() {
 		return id;
@@ -47,7 +47,7 @@ public class Favorito {
 	}
 
 	/**
-	 * @return o usuario
+	 * @return Usuario - o usuario
 	 */
 	public Usuario getUsuario() {
 		return usuario;
@@ -61,7 +61,7 @@ public class Favorito {
 	}
 
 	/**
-	 * @return a pagina
+	 * @return Pagina - a pagina
 	 */
 	public Pagina getPagina() {
 		return pagina;
@@ -75,7 +75,7 @@ public class Favorito {
 	}
 	
 	/**
-	 * @return o id e o nome formatados juntos em formato string
+	 * @return String - o id e o nome formatados juntos em formato string
 	 */
 	@Override
 	public String toString() {

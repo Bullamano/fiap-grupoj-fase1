@@ -51,7 +51,7 @@ public class Usuario {
 	private Collection<Favorito> favoritos;
 
 	/**
-	 * @return o id
+	 * @return Integer - o id
 	 */
 	public Integer getId() {
 		return id;
@@ -65,7 +65,7 @@ public class Usuario {
 	}
 
 	/**
-	 * @return o login
+	 * @return String - o login
 	 */
 	public String getLogin() {
 		return login;
@@ -79,7 +79,7 @@ public class Usuario {
 	}
 
 	/**
-	 * @return o email
+	 * @return String - o email
 	 */
 	public String getEmail() {
 		return email;
@@ -93,7 +93,7 @@ public class Usuario {
 	}
 
 	/**
-	 * @return a senha
+	 * @return String - a senha
 	 */
 	public String getSenha() {
 		return senha;
@@ -120,7 +120,7 @@ public class Usuario {
 	}
 
 	/**
-	 * @return os favoritos
+	 * @return Collection<Favorito> - os favoritos
 	 */
 	public Collection<Favorito> getFavoritos() {
 		if(favoritos != null) {
@@ -139,7 +139,7 @@ public class Usuario {
 	}
 	
 	/**
-	 * @return o id e o nome formatados juntos em formato string
+	 * @return String - o id e o nome formatados juntos em formato string
 	 */
 	@Override
 	public String toString() {
@@ -149,7 +149,7 @@ public class Usuario {
 	/**
 	 * Método para verificar a senha de um usuário
 	 * @param Senha a senha a ser testada
-	 * @return Um booleano indicando se a senha está correta ou não
+	 * @return Boolean - Um booleano indicando se a senha está correta ou não
 	 */
 	public Boolean testSenha(String senha) {
 		try {

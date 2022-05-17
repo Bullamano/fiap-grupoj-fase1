@@ -51,7 +51,7 @@ public class Procedimento {
 	private String tarefas;
 
 	/**
-	 * @return o id
+	 * @return Integer - o id
 	 */
 	public Integer getId() {
 		return id;
@@ -65,7 +65,7 @@ public class Procedimento {
 	}
 
 	/**
-	 * @return a pagina
+	 * @return Pagina - a pagina
 	 */
 	public Pagina getPagina() {
 		return pagina;
@@ -79,7 +79,7 @@ public class Procedimento {
 	}
 	
 	/**
-	 * @return a ordem
+	 * @return Integer - a ordem
 	 */
 	public Integer getOrdem() {
 		return ordem;
@@ -93,7 +93,7 @@ public class Procedimento {
 	}
 
 	/**
-	 * @return o titulo
+	 * @return String - o titulo
 	 */
 	public String getTitulo() {
 		return titulo;
@@ -107,7 +107,7 @@ public class Procedimento {
 	}
 
 	/**
-	 * @return as tarefas
+	 * @return String - as tarefas
 	 */
 	public String getTarefas() {
 		return tarefas;
@@ -121,7 +121,7 @@ public class Procedimento {
 	}
 	
 	/**
-	 * @return o id e o nome formatados juntos em formato string
+	 * @return String - o id e o nome formatados juntos em formato string
 	 */
 	@Override
 	public String toString() {

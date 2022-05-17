@@ -76,7 +76,7 @@ public class Pagina {
 	private Collection<Favorito> favoritos;
 	
 	/**
-	 * @return o id
+	 * @return Integer - o id
 	 */
 	public Integer getId() {
 		return id;
@@ -90,7 +90,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return a categoria
+	 * @return Categoria - a categoria
 	 */
 	public Categoria getCategoria() {
 		return categoria;
@@ -104,14 +104,14 @@ public class Pagina {
 	}
 
 	/**
-	 * @return o nome
+	 * @return String - o nome
 	 */
 	public String getNome() {
 		return nome;
 	}
 	
 	/**
-	 * @return o usuário autor
+	 * @return Usuario - o usuário autor
 	 */
 	public Usuario getAutor(EntityManager em) {
 		if(Autor != null) {
@@ -151,7 +151,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return o ID do usuário autor
+	 * @return int - o ID do usuário autor
 	 */
 	public int getIdAutor() {
 		return idAutor;
@@ -168,7 +168,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return o nome do autor
+	 * @return String - o nome do autor
 	 */
 	public String getNomeAutor() {
 		return nomeAutor;
@@ -192,7 +192,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return os procedimentos
+	 * @return Collection<Procedimento> - os procedimentos
 	 */
 	public Collection<Procedimento> getProcedimentos() {
 		if(procedimentos != null) {
@@ -211,7 +211,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return os recursos
+	 * @return Collection<Recursos> - os recursos
 	 */
 	public Collection<Recursos> getRecursos() {
 		if(recursos != null) {
@@ -230,7 +230,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return os favoritos
+	 * @return Collection<Favorito> - os favoritos
 	 */
 	public Collection<Favorito> getFavoritos() {
 		if(favoritos != null) {
@@ -249,7 +249,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return o id e o nome formatados juntos em formato string
+	 * @return String - o id e o nome formatados juntos em formato string
 	 */
 	@Override
 	public String toString() {

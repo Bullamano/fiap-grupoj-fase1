@@ -57,7 +57,7 @@ public class Recursos {
 	private String linkImagem;
 
 	/**
-	 * @return o id
+	 * @return Integer - o id
 	 */
 	public Integer getId() {
 		return id;
@@ -71,7 +71,7 @@ public class Recursos {
 	}
 
 	/**
-	 * @return a pagina
+	 * @return Pagina - a pagina
 	 */
 	public Pagina getPagina() {
 		return pagina;
@@ -85,7 +85,7 @@ public class Recursos {
 	}
 
 	/**
-	 * @return a ordem
+	 * @return Integer - a ordem
 	 */
 	public Integer getOrdem() {
 		return ordem;
@@ -99,7 +99,7 @@ public class Recursos {
 	}
 	
 	/**
-	 * @return o linkVideo
+	 * @return String - o linkVideo
 	 */
 	public String getLinkVideo() {
 		return linkVideo;
@@ -113,7 +113,7 @@ public class Recursos {
 	}
 
 	/**
-	 * @return o linkLeitura
+	 * @return String - o linkLeitura
 	 */
 	public String getLinkLeitura() {
 		return linkLeitura;
@@ -127,7 +127,7 @@ public class Recursos {
 	}
 
 	/**
-	 * @return o linkImagem
+	 * @return String - o linkImagem
 	 */
 	public String getLinkImagem() {
 		return linkImagem;
@@ -141,7 +141,7 @@ public class Recursos {
 	}
 
 	/**
-	 * @return o id e o nome formatados juntos em formato string
+	 * @return String - o id e o nome formatados juntos em formato string
 	 */
 	@Override
 	public String toString() {

@@ -33,7 +33,7 @@ public class Categoria {
 	private Collection<Pagina> paginas;
 
 	/**
-	 * @return o id
+	 * @return Integer - o id
 	 */
 	public Integer getId() {
 		return id;
@@ -47,7 +47,7 @@ public class Categoria {
 	}
 
 	/**
-	 * @return o nome
+	 * @return String - o nome
 	 */
 	public String getNome() {
 		return nome;
@@ -61,7 +61,7 @@ public class Categoria {
 	}
 	
 	/**
-	 * @return as paginas dessa categoria
+	 * @return Collection<Pagina> - as paginas dessa categoria
 	 */
 	public Collection<Pagina> getPaginas() {
 		if(paginas != null) {
@@ -80,7 +80,7 @@ public class Categoria {
 	}
 	
 	/**
-	 * @return o id e o nome formatados juntos em formato string
+	 * @return String - o id e o nome formatados juntos em formato string
 	 */
 	@Override
 	public String toString() {

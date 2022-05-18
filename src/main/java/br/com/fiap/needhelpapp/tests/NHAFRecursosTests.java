@@ -65,14 +65,14 @@ public class NHAFRecursosTests {
             /**
              * Pesquisa por uma string link de um recurso (retorno lista)
              */            
-            System.out.println("\nPesquisa por nome (lista):");
+            System.out.println("\nPesquisa por link (lista):");
             System.out.println(recursosDAO.getByLink("https://www.masp.org.br/", Enums.linkType.leitura));
             
             
             /**
              * Pesquisa por uma string parcial do link de um recurso
              */            
-            System.out.println("\nPesquisa por nome (parcial):");
+            System.out.println("\nPesquisa por link (parcial):");
             System.out.println(recursosDAO.getByLinkPartial("youtube", Enums.linkType.video));
             
             /**

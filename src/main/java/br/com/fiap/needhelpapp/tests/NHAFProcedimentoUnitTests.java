@@ -2,13 +2,10 @@ package br.com.fiap.needhelpapp.tests;
 
 import br.com.fiap.dao.PaginaDAO;
 import br.com.fiap.dao.ProcedimentoDAO;
-import br.com.fiap.needhelpapp.model.Categoria;
 import br.com.fiap.needhelpapp.model.Pagina;
 import br.com.fiap.needhelpapp.model.Procedimento;
 import br.com.fiap.utils.Enums;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.Assert;
@@ -28,12 +25,11 @@ import jakarta.persistence.Persistence;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class NHAFProcedimentoUnitTests {
 	
-	
 	//Variáveis a serem usadas nos testes
 	static List<Procedimento> listagemProcedimento, procsPag, procedimentoByTitulo,
 							  procedimentoByTituloPartial, procedimentosPostInsert, procedimentosPostDelete;
 	static Pagina paginaPesquisada, paginaProcNovo, pagProcExistente;
-	static Procedimento procedimento, procedimentoByTituloUnique, procedimentoCreate,
+	static Procedimento procedimentoByTituloUnique, procedimentoCreate,
 						procedimentoExistente, procedimentoRecuperado, procedimentoParaDeletar;
 	
 	EntityManager entityManager = Persistence.createEntityManagerFactory("need-help-app-fiap").createEntityManager();

@@ -89,13 +89,13 @@ public class NHAFPaginaTests {
             /**
              * Pesquisa por uma string parcial do nome do autor de uma página
              */            
-            System.out.println("\nPesquisa por nome (parcial):");
+            System.out.println("\nPesquisa por nome do autor (parcial):");
             System.out.println(paginaDAO.getByNomeAutor("1"));
             
             /**
              * Pesquisa por um ID do usuário autor de uma página
              */            
-            System.out.println("\nPesquisa por nome (parcial):");
+            System.out.println("\nPesquisa por ID do autor (parcial):");
             System.out.println(paginaDAO.getByIdAutor(2));
             
             /**
@@ -226,11 +226,20 @@ public class NHAFPaginaTests {
             entityManager.getTransaction().commit();
             
             //A página deve ser mantida mesmo o usuário não existindo mais
-            Pagina paginaSemUser = paginaDAO.getByNameUnique(paginaEterna.getNome());
+            Pagina paginaSemUser = new Pagina();
+            paginaSemUser = paginaDAO.getByNameUnique(paginaEterna.getNome());
             System.out.println("A página " + paginaSemUser + " ainda existe!");
             System.out.println("O ID original do usuário autor é " + paginaSemUser.getIdAutor());
             System.out.println("O nome do usuário autor é " + paginaSemUser.getNomeAutor());
             System.out.println("Essas informações continuam no banco mesmo o usuário tendo sido excluído --> " + usuarioDAO.recuperar(usuarioPagEterna.getId()));
+            
+            //Exclusão da página para retornar o banco ao estado original
+            entityManager.getTransaction().begin();
+            
+            paginaDAO.excluir(paginaSemUser);
+            
+            entityManager.getTransaction().commit();
+            
         } 
         catch (Exception e)
         {

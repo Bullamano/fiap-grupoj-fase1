@@ -17,6 +17,11 @@ import org.junit.runners.MethodSorters;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
+/**
+ * Testes unitários para Categoria.
+ * Os testes seguem a ordem numérica testN,
+ * na qual N é o númeroascendente do teste (1 a 9).
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class NHAFCategoriaUnitTests {
 	
@@ -121,11 +126,14 @@ public class NHAFCategoriaUnitTests {
          * Criação de objeto no banco
          */
         entityManager.getTransaction().begin();
+        
         categoriaCreate = new Categoria();
         categoriaCreate.setNome("Dicas ruins demais");
+        
         categoriaDAO.salvar(categoriaCreate);
+        
         entityManager.getTransaction().commit();
-        System.out.println(categoriaDAO.getByNameUnique(categoriaCreate.getNome()));
+        
         categoriasPostInsert = categoriaDAO.listar();
 		
         /**
@@ -146,15 +154,21 @@ public class NHAFCategoriaUnitTests {
          * Modificando um objeto já presente no banco
          */
         entityManager.getTransaction().begin();
+        
         categoriaExistente = new Categoria();
         categoriaExistente = categoriaDAO.getByNameUnique("Dicas ruins demais");
+        
         paginaExistente = paginaDAO.recuperar(1);
         paginasCollection = new ArrayList<Pagina>();
         paginasCollection.add(paginaExistente);
+        
         categoriaExistente.setNome("Dicas espetaculares");
         categoriaExistente.setPaginas(paginasCollection);
+        
         categoriaDAO.salvar(categoriaExistente);
+        
         entityManager.getTransaction().commit();
+        
         categoriaRecuperada = categoriaDAO.recuperar(categoriaExistente.getId());
         
         /**
@@ -177,9 +191,13 @@ public class NHAFCategoriaUnitTests {
          * Deletando o objeto criado acima
          */
         entityManager.getTransaction().begin();
+        
         categoriaParaDeletar = categoriaDAO.recuperar(categoriaRecuperada.getId());
+        
         categoriaDAO.excluir(categoriaParaDeletar);
+        
         entityManager.getTransaction().commit();
+        
         categoriaPostDelete = categoriaDAO.listar();
         
         /**

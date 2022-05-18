@@ -19,8 +19,9 @@ import jakarta.persistence.Persistence;
 
 /**
  * Testes unitários para Categoria.
- * Os testes seguem a ordem numérica testN,
- * na qual N é o númeroascendente do teste (1 a 9).
+ * Os testes seguem a ordem numérica testXN,
+ * na qual X é uma letra (começando sem letra, seguido por A, B e assim por diante)
+ * e N é o número ascendente do teste (1 a 9).
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class NHAFCategoriaUnitTests {
@@ -140,7 +141,7 @@ public class NHAFCategoriaUnitTests {
          * Testes
          */
 		Assert.assertNotNull(categoriaCreate);
-		Assert.assertTrue(categoriaCreate.getId() != null);
+		Assert.assertNotNull(categoriaCreate.getId());
 		Assert.assertEquals("Dicas ruins demais", categoriaCreate.getNome());
 		Assert.assertEquals(5, categoriasPostInsert.size());
 	}

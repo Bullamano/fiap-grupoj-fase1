@@ -224,8 +224,10 @@ public class NHAFPaginaUnitTests {
          * Testes
          */
 		Assert.assertNotNull(paginasPostInsert);
-		Assert.assertTrue(paginaCreate.getId() != null);
+		Assert.assertNotNull(paginaCreate.getId());
 		Assert.assertEquals("Página inútil", paginaCreate.getNome());
+		Assert.assertEquals(categPagCreate, paginaCreate.getCategoria());
+		Assert.assertEquals(usuarioPagCreate, paginaCreate.getAutor(entityManager));
 		Assert.assertEquals(7, paginasPostInsert.size());
 	}
 	
@@ -279,8 +281,11 @@ public class NHAFPaginaUnitTests {
 		Assert.assertSame(paginaExistente, paginaRecuperada);
 		Assert.assertEquals("Página maravilhosa", paginaRecuperada.getNome());
 		Assert.assertEquals(1, paginaRecuperada.getProcedimentos().size());
+		Assert.assertEquals(procedimentosCollection.toString(), paginaRecuperada.getProcedimentos().toString());
 		Assert.assertEquals(1, paginaRecuperada.getRecursos().size());
+		Assert.assertEquals(recursosCollection.toString(), paginaRecuperada.getRecursos().toString());
 		Assert.assertEquals(1, paginaRecuperada.getFavoritos().size());
+		Assert.assertEquals(favoritoCollection.toString(), paginaRecuperada.getFavoritos().toString());
 		Assert.assertEquals(usuarioPagExistente, paginaRecuperada.getAutor(entityManager));
 		Assert.assertEquals(2, paginaRecuperada.getIdAutor());
 		Assert.assertEquals("Usuário 2", paginaRecuperada.getNomeAutor());

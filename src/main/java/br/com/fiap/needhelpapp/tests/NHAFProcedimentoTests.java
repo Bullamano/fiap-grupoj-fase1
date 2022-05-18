@@ -71,7 +71,7 @@ public class NHAFProcedimentoTests {
              * Pesquisa por uma string titulo de um procedimento (retorno único)
              */            
             System.out.println("\nPesquisa por nome (único):");
-            System.out.println(procedimentoDAO.getByTituloUnique("Ingredientes"));
+            System.out.println(procedimentoDAO.getByTituloUnique("Top 10 lugares"));
             
             /**
              * Pesquisa por uma string parcial do titulo de um procedimento

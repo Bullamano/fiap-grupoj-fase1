@@ -16,7 +16,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
 /**
- * Testes unitários para Categoria.
+ * Testes unitários para Pagina.
  * Os testes seguem a ordem numérica testXN,
  * na qual X é uma letra (começando sem letra, seguido por A, B e assim por diante)
  * e N é o número ascendente do teste (1 a 9).

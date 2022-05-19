@@ -92,7 +92,7 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	
 	/**
 	 * Pesquisa de Pagina por um nome (completo ou parcial) do autor
-	 * @param nome String com o nome (completo ou parcial) do autor
+	 * @param nomeAutor String com o nome (completo ou parcial) do autor
 	 * @return uma Lista com as paginas cujos nomes de autor contenham a string desejada
 	 */
 	@SuppressWarnings("unchecked")
@@ -132,7 +132,7 @@ public class PaginaDAO extends GenericDAO<Pagina, Integer> {
 	
 	/**
 	 * Exclui uma Pagina garantindo a exclusão também de seus Favoritos, Procedimentos e Recursos.
-	 * @param chave Chave (ID) do banco de um registro.
+	 * @param pagina Pagina a ser deletada.
 	 */
 	public void excluir(Pagina pagina) {
 		FavoritoDAO favoritoDAO = new FavoritoDAO(this.em);

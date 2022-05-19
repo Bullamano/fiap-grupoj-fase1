@@ -61,7 +61,7 @@ public class Categoria {
 	}
 	
 	/**
-	 * @return Collection<Pagina> - as paginas dessa categoria
+	 * @return Collection de Pagina - as paginas dessa categoria
 	 */
 	public Collection<Pagina> getPaginas() {
 		if(paginas != null) {

@@ -130,7 +130,7 @@ public class UsuarioDAO extends GenericDAO<Usuario, Integer> {
 	
 	/**
 	 * Exclui um Usuario garantindo a exclusão também de seus Favoritos.
-	 * @param chave Chave (ID) do banco de um registro.
+	 * @param usuario Usuario a ser excluído.
 	 */
 	public void excluir(Usuario usuario) {
 		FavoritoDAO favoritoDAO = new FavoritoDAO(this.em);

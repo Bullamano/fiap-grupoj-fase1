@@ -120,7 +120,7 @@ public class Usuario {
 	}
 
 	/**
-	 * @return Collection<Favorito> - os favoritos
+	 * @return Collection de Favorito - os favoritos
 	 */
 	public Collection<Favorito> getFavoritos() {
 		if(favoritos != null) {
@@ -148,7 +148,7 @@ public class Usuario {
 	
 	/**
 	 * Método para verificar a senha de um usuário
-	 * @param Senha a senha a ser testada
+	 * @param senha a senha a ser testada
 	 * @return Boolean - Um booleano indicando se a senha está correta ou não
 	 */
 	public Boolean testSenha(String senha) {

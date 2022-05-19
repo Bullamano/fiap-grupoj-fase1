@@ -74,7 +74,7 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> {
 	
 	/**
 	 * Exclui uma Categoria garantindo a exclusão também de seus Favoritos, Paginas, Procedimentos e Recursos.
-	 * @param chave Chave (ID) do banco de um registro.
+	 * @param categoria Categoria a ser excluída.
 	 */
 	public void excluir(Categoria categoria) {
 		PaginaDAO paginaDAO = new PaginaDAO(this.em);

@@ -111,6 +111,8 @@ public class Pagina {
 	}
 	
 	/**
+	 * 
+	 * @param em Entity Manager
 	 * @return Usuario - o usuário autor
 	 */
 	public Usuario getAutor(EntityManager em) {
@@ -192,7 +194,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return Collection<Procedimento> - os procedimentos
+	 * @return Collection de Procedimento - os procedimentos
 	 */
 	public Collection<Procedimento> getProcedimentos() {
 		if(procedimentos != null) {
@@ -211,7 +213,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return Collection<Recursos> - os recursos
+	 * @return Collection de Recursos - os recursos
 	 */
 	public Collection<Recursos> getRecursos() {
 		if(recursos != null) {
@@ -230,7 +232,7 @@ public class Pagina {
 	}
 
 	/**
-	 * @return Collection<Favorito> - os favoritos
+	 * @return Collection de Favorito - os favoritos
 	 */
 	public Collection<Favorito> getFavoritos() {
 		if(favoritos != null) {

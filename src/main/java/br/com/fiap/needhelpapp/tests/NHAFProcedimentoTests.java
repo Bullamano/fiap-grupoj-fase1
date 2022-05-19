@@ -14,6 +14,10 @@ import br.com.fiap.needhelpapp.model.Procedimento;
  */
 public class NHAFProcedimentoTests {
 
+	/**
+	 * Método principal da classe de testes
+	 * @param args args
+	 */
 	public static void main(String[] args) {
 		
 		EntityManager entityManager = null;

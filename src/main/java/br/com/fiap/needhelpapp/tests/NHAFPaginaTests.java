@@ -13,6 +13,10 @@ import jakarta.persistence.Persistence;
  */
 public class NHAFPaginaTests {
 	
+	/**
+	 * Método principal da classe de testes
+	 * @param args args
+	 */
 	public static void main(String[] args) {
 		
 		EntityManager entityManager = null;

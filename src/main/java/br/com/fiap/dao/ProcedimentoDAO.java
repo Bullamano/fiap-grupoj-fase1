@@ -60,7 +60,7 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	
 	/**
 	 * Pesquisa de Procedimento por um nome parcial
-	 * @param nome String com o titulo (parcial) desejado para a pesquisa
+	 * @param titulo String com o titulo (parcial) desejado para a pesquisa
 	 * @return uma Lista com as procedimentos cujos titulos possuem a string desejada
 	 */
 	@SuppressWarnings("unchecked")
@@ -103,7 +103,6 @@ public class ProcedimentoDAO extends GenericDAO<Procedimento, Integer> {
 	
 	/**
 	 * Pesquisa de Procedimento de acordo com uma Pagina
-	 * @param entityManager Entity Manager
 	 * @param paginaId paginaId ID de uma Pagina
 	 * @param ordem Se as informações devem ser retornadas em ordem ascendente, decrescente ou irrelevante (conforme está no banco)
 	 * @return Lista de procedimentos pertencentes a uma Pagina

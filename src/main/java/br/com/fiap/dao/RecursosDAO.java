@@ -51,7 +51,6 @@ public class RecursosDAO extends GenericDAO<Recursos, Integer> {
 	
 	/**
 	 * Pesquisa de Recursos de acordo com uma Pagina
-	 * @param entityManager Entity Manager
 	 * @param paginaId paginaId ID de uma Pagina
 	 * @param ordem Se as informações devem ser retornadas em ordem ascendente, decrescente ou irrelevante (conforme está no banco)
 	 * @return Lista de recursos pertencentes a uma Pagina

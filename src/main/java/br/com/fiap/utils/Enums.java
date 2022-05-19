@@ -10,14 +10,36 @@ public class Enums {
 	 * registros retornados
 	 */
 	public static enum order{
-		asc, desc, irrelevant
+		/**
+		 * Ordem ascendente
+		 */
+		asc,
+		/**
+		 * Ordem descendente
+		 */
+		desc,
+		/**
+		 * A ordem é irrelevante
+		 */
+		irrelevant
 	}
 	
 	/**
 	 * Tipo de link para os Recursos da aplicação
 	 */
 	public static enum linkType{
-		leitura, imagem, video
+		/**
+		 * Links contendo textos para leituras relacionadas ao assunto
+		 */
+		leitura,
+		/**
+		 * Links contendo imagens relacionadas ao assunto
+		 */
+		imagem,
+		/**
+		 * Links contendo vídeos relacionados ao assunto
+		 */
+		video
 	}
 
 }

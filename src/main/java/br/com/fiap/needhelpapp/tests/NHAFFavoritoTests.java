@@ -12,8 +12,15 @@ import br.com.fiap.needhelpapp.model.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
+/**
+ * Testes referentes a Favorito
+ */
 public class NHAFFavoritoTests {
 
+	/**
+	 * Método principal da classe de testes
+	 * @param args args
+	 */
 	public static void main(String[] args) {
 		
 		EntityManager entityManager = null;

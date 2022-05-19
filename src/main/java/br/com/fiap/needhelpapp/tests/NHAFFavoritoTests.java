@@ -75,6 +75,7 @@ public class NHAFFavoritoTests {
             /**
              * Criação de objeto no banco
              */
+            System.out.println("\nCriando um novo favorito...");
             entityManager.getTransaction().begin();
             
             Favorito favoritoNovo = new Favorito();
@@ -90,6 +91,7 @@ public class NHAFFavoritoTests {
         	entityManager.getTransaction().commit();
         	
         	//Favoritos no banco após insert
+        	System.out.println("\nListagem dos favoritos após o insert:");
 	        List<Favorito> listaFavs = favoritoDAO.listar();
 	        for(Favorito fav : listaFavs)
 	        {

@@ -72,6 +72,7 @@ public class NHAFUsuarioTests {
             /**
              * Criação de objeto no banco
              */
+            System.out.println("\nCriando um usuário...");
             entityManager.getTransaction().begin();
             
         	Usuario usuarioNovo = new Usuario();
@@ -84,6 +85,7 @@ public class NHAFUsuarioTests {
         	entityManager.getTransaction().commit();
         	
         	//Usuários no banco após insert
+        	System.out.println("\nListagem dos usuários após o insert:");
 	        List<Usuario> listaUsers = usuarioDAO.listar();
 	        for(Usuario user : listaUsers)
 	        {
@@ -93,9 +95,10 @@ public class NHAFUsuarioTests {
 	        /**
 	         * Teste de senha
 	         */
-	        System.out.println("\nHash da senha: " + usuarioNovo.getSenha());
-	        System.out.println("Teste com a senha correta: " + usuarioNovo.testSenha("bones"));
-	        System.out.println("Teste com a senha errada: " + usuarioNovo.testSenha("determination"));
+	        System.out.println("\nTestes de senha de usuário:");
+	        System.out.println("\nHash da senha correta: " + usuarioNovo.getSenha());
+	        System.out.println("Teste com a senha correta -> bones: " + usuarioNovo.testSenha("bones"));
+	        System.out.println("Teste com a senha errada -> determination: " + usuarioNovo.testSenha("determination"));
 	        
 	        /**
              * Modificando um objeto já presente no banco

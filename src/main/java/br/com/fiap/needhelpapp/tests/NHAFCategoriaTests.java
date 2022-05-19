@@ -71,6 +71,7 @@ public class NHAFCategoriaTests {
             /**
              * Criação de objeto no banco
              */
+            System.out.println("\nCriando uma nova categoria...");
             entityManager.getTransaction().begin();
             
             Categoria categoriaNova = new Categoria();

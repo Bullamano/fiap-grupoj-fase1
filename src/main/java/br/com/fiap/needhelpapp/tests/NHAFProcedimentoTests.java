@@ -48,7 +48,7 @@ public class NHAFProcedimentoTests {
             List<Pagina> listaPag = paginaDAO.listar();
             System.out.println("\nListagem de todos os procedimentos por página:");
             for(Pagina pag : listaPag){
-            	System.out.println(pag);
+            	System.out.println("\n" + pag);
             	List<Procedimento> listaProc = procedimentoDAO.getByPagina(pag.getId(), Enums.order.asc);
             	for(Procedimento proc : listaProc){
                 	System.out.println("\n\t" + proc);
@@ -86,6 +86,7 @@ public class NHAFProcedimentoTests {
             /**
              * Criação de objeto no banco
              */
+            System.out.println("\nCriando um novo procedimento...");
             entityManager.getTransaction().begin();
             
             Procedimento procedimentoNovo = new Procedimento();

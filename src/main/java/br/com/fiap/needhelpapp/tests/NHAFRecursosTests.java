@@ -49,7 +49,7 @@ public class NHAFRecursosTests {
             List<Pagina> listaPag = paginaDAO.listar();
             System.out.println("\nListagem de todos os recursos por página:");
             for(Pagina pag : listaPag){
-            	System.out.println(pag);
+            	System.out.println("\n" + pag);
             	List<Recursos> listaRec = recursosDAO.getByPagina(pag.getId(), Enums.order.desc);
             	for(Recursos rec : listaRec){
                 	System.out.println("\n\t" + rec);
@@ -85,6 +85,7 @@ public class NHAFRecursosTests {
              * Neste caso, contudo, para fins demonstrativos, colocamos todos os links, mesmo eles
              * não tendo relações entre si (aparentemente).
              */
+            System.out.println("\nCriando um novo registro de Recursos...");
             entityManager.getTransaction().begin();
             
             Recursos recursosNovos = new Recursos();

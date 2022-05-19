@@ -105,6 +105,7 @@ public class NHAFPaginaTests {
             /**
              * Criação de objeto no banco
              */
+            System.out.println("\nCriando uma nova página...");
             entityManager.getTransaction().begin();
             
             Pagina paginaNova = new Pagina();
